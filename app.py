@@ -83,9 +83,11 @@ for idx, (file_name, folder_name, file_path, parsed_text) in enumerate(results):
         image_to_display = file_path
         if not os.path.exists(image_to_display):
             # Try relative path for production deployment
-            relative_path = os.path.join("images", os.path.basename(os.path.dirname(file_path)), file_name)
-            if os.path.exists(relative_path):
-                image_to_display = relative_path
+            # Search for the file in images folder recursively
+            for root, dirs, files in os.walk("images"):
+                if file_name in files:
+                    image_to_display = os.path.join(root, file_name)
+                    break
 
         if os.path.exists(image_to_display):
             st.image(image_to_display, use_container_width=True, caption=f"Original Scan: {file_name}")

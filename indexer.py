@@ -2,6 +2,8 @@ import os
 import re
 import time
 import sqlite3
+import cv2
+import numpy as np
 import pytesseract
 from PIL import Image
 
@@ -24,55 +26,44 @@ def init_db():
     conn.commit()
     conn.close()
 
-def find_best_rotation_angle(img):
-    """Detects best rotation angle using OSD with a 4-angle word score fallback."""
-    # Method 1: Try Tesseract OSD
-    try:
-        osd = pytesseract.image_to_osd(img)
-        angle = int(re.search(r'Rotate: (\d+)', osd).group(1))
-        conf = float(re.search(r'Orientation confidence: ([\d\.]+)', osd).group(1))
-        if conf > 1.5:
-            return angle
-    except Exception:
-        pass
+def preprocess_for_ocr(pil_img):
+    """Converts image to high-contrast black-and-white to remove background yellowing and noise."""
+    # Convert PIL Image to OpenCV numpy array
+    img_array = np.array(pil_img.convert('RGB'))
+    gray = cv2.cvtColor(img_array, cv2.COLOR_RGB2GRAY)
 
-    # Method 2: Test 0°, 90°, 180°, and 270° on a lightweight thumbnail
-    thumb = img.copy()
-    thumb.thumbnail((600, 600))
-    
-    best_angle = 0
-    max_word_count = -1
+    # Upscale 2x if the image/text resolution is low
+    h, w = gray.shape
+    if h < 1200 or w < 1200:
+        gray = cv2.resize(gray, (w * 2, h * 2), interpolation=cv2.INTER_CUBIC)
 
-    for angle in [0, 90, 180, 270]:
-        test_img = thumb.rotate(360 - angle, expand=True) if angle != 0 else thumb
-        data = pytesseract.image_to_data(test_img, output_type=pytesseract.Output.DICT)
-        
-        # Count words recognized with >40% confidence
-        word_count = sum(1 for t, c in zip(data['text'], data['conf']) if int(c) > 40 and len(t.strip()) > 2)
-        
-        if word_count > max_word_count:
-            max_word_count = word_count
-            best_angle = angle
+    # Apply Otsu's thresholding to strip yellowed paper background & ink bleed
+    _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
-    return best_angle
+    return Image.fromarray(binary)
+
+def clean_ocr_text(text):
+    """Removes random floating gibberish symbols while keeping financial terms and standard prose."""
+    # Remove random solitary non-alphanumeric noise symbols
+    text = re.sub(r'(?<=\s)[^\w\s%.,\-\(\)\$₹£](?=\s)', '', text)
+    # Fix hyphenated words broken across lines
+    text = re.sub(r'(\w+)-\n(\w+)', r'\1\2', text)
+    # Collapse multiple blank lines into standard paragraphs
+    text = re.sub(r'\n\s*\n', '\n\n', text)
+    return text.strip()
 
 def process_and_fix_image(image_path):
     img = Image.open(image_path)
-    
-    angle = find_best_rotation_angle(img)
-    if angle in (90, 180, 270):
-        img = img.rotate(360 - angle, expand=True)
-        try:
-            img.save(image_path)  # Overwrite image upright for Streamlit display
-        except Exception:
-            pass
 
-    # Extract text on the upright image using column mode (--psm 1)
-    raw_text = pytesseract.image_to_string(img, config=r'--psm 1 --oem 3')
-    
-    # Clean up hyphenated column breaks
-    cleaned_text = re.sub(r'(\w+)-\n(\w+)', r'\1\2', raw_text)
-    return cleaned_text
+    # 1. Preprocess to high-contrast black & white
+    clean_img = preprocess_for_ocr(img)
+
+    # 2. Run OCR with PSM 4 (Column aware for news clips)
+    custom_config = r'--psm 4 --oem 3'
+    raw_text = pytesseract.image_to_string(clean_img, config=custom_config)
+
+    # 3. Post-process clean text
+    return clean_ocr_text(raw_text)
 
 def run_indexer():
     init_db()

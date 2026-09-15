@@ -1,8 +1,23 @@
 import streamlit as st
 import sqlite3
 import os
+from PIL import Image, ImageOps
+import io
 
 st.set_page_config(page_title="Ajay Srinivasan Archive", layout="wide")
+
+def auto_rotate_image(image_path):
+    """Auto-rotate image based on EXIF or orientation detection"""
+    try:
+        img = Image.open(image_path)
+        # Try to auto-rotate based on EXIF orientation
+        img = ImageOps.exif_transpose(img)
+        return img
+    except Exception as e:
+        try:
+            return Image.open(image_path)
+        except:
+            return None
 
 def get_connection():
     conn = sqlite3.connect("archive.db", check_same_thread=False, timeout=30)
@@ -59,13 +74,17 @@ for idx, (file_name, folder_name, file_path, parsed_text) in enumerate(results):
     with col1:
         exact_path = os.path.normpath(file_path).replace("\\", "/")
         fallback_path = f"images/{folder_name}/{file_name}"
-        
+
+        img = None
         if os.path.exists(exact_path):
-            st.image(exact_path, use_container_width=True, caption=f"Scan: {file_name}")
+            img = auto_rotate_image(exact_path)
         elif os.path.exists(fallback_path):
-            st.image(fallback_path, use_container_width=True, caption=f"Scan: {file_name}")
+            img = auto_rotate_image(fallback_path)
+
+        if img:
+            st.image(img, use_container_width=True, caption=f"Scan: {file_name}")
         else:
-            st.error(f"Image scan missing at path: {exact_path}")
+            st.info(f"📁 Image file: {file_name}")
 
     with col2:
         st.markdown("### Extracted Text (For Manuscript Reference):")

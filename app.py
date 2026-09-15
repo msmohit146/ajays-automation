@@ -1,8 +1,13 @@
 import streamlit as st
 import sqlite3
 import os
+import re
 
 st.set_page_config(page_title="Ajay Srinivasan Archive", layout="wide")
+
+def sanitize_key(text):
+    """Remove special characters from key"""
+    return re.sub(r'[^a-zA-Z0-9_]', '', text)[:50]
 
 def get_connection():
     conn = sqlite3.connect("archive.db", check_same_thread=False, timeout=30)
@@ -69,16 +74,18 @@ for file_name, folder_name, file_path, parsed_text in results:
 
     with col2:
         st.markdown("### Extracted Text (For Manuscript Reference):")
+        safe_key = sanitize_key(f"txt_{folder_name}_{file_name}")
         st.text_area(
             label="OCR Text Transcript",
             value=parsed_text if parsed_text else "No text extracted.",
             height=450,
-            key=f"txt_{folder_name}_{file_name}"
+            key=safe_key
         )
+        safe_dl_key = sanitize_key(f"dl_{folder_name}_{file_name}")
         st.download_button(
             label="💾 Export Transcript (.txt)",
             data=parsed_text if parsed_text else "",
             file_name=f"{file_name}_transcript.txt",
             mime="text/plain",
-            key=f"dl_{folder_name}_{file_name}"
+            key=safe_dl_key
         )

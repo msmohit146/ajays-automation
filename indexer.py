@@ -1,76 +1,111 @@
 import os
 import re
 import sqlite3
-import keras_ocr
-from PIL import Image
-import numpy as np
+import pytesseract
+from PIL import Image, ImageFilter, ImageOps
+
+if os.path.exists(r'C:\Program Files\Tesseract-OCR\tesseract.exe'):
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 DB_NAME = "archive.db"
 ROOT_DIR = "images"
 
-# Initialize Keras-OCR pipeline (loads models on first run)
-pipeline = keras_ocr.pipeline.Pipeline()
+def detect_columns(img):
+    """Detect columns by analyzing white space (PIL only, no cv2)"""
+    # Convert to grayscale
+    if img.mode != 'L':
+        gray = img.convert('L')
+    else:
+        gray = img
 
-def extract_text_keras_ocr(image_path):
-    """Extract text using Keras-OCR (better for scanned documents)"""
+    w, h = gray.size
+    pixels = gray.load()
+
+    # Count white pixels in each column
+    col_white = [0] * w
+    for x in range(w):
+        for y in range(h):
+            if pixels[x, y] > 200:  # White pixels
+                col_white[x] += 1
+
+    # Find columns: areas with low white density indicate column gaps
+    threshold = h * 0.7  # 70% threshold for gap detection
+    columns = []
+    in_column = False
+    col_start = 0
+
+    for x in range(w):
+        is_gap = col_white[x] > threshold
+
+        if not is_gap and not in_column:
+            col_start = x
+            in_column = True
+        elif is_gap and in_column:
+            col_width = x - col_start
+            if col_width > w * 0.15:  # Column must be >15% width
+                columns.append((col_start, x))
+            in_column = False
+
+    if in_column:
+        columns.append((col_start, w))
+
+    return columns if len(columns) > 1 else None
+
+def extract_text_ocr(image_path):
+    """Extract text with smart column detection (PIL + Tesseract)"""
     try:
-        # Read image
-        images = [keras_ocr.tools.read(image_path)]
+        img = Image.open(image_path)
     except:
         return ""
 
-    # Predict text
-    try:
-        prediction_groups = pipeline.recognize(images)
-    except Exception as e:
-        print(f"OCR error for {image_path}: {e}")
+    # Upscale low-res images
+    w, h = img.size
+    if h < 1200 or w < 1200:
+        scale = 2 if h < 1200 else 1
+        img = img.resize((w * scale, h * scale), Image.LANCZOS)
+
+    # Convert to grayscale and enhance
+    if img.mode != 'L':
+        img = img.convert('L')
+
+    # Enhance contrast
+    img = ImageOps.autocontrast(img, cutoff=5)
+
+    # Detect columns
+    columns = detect_columns(img)
+
+    extracted_text = []
+
+    if columns:
+        # Process each column separately
+        for col_start, col_end in columns:
+            # Add small margin
+            margin = max(5, int((col_end - col_start) * 0.02))
+            left = max(0, col_start - margin)
+            right = min(img.width, col_end + margin)
+
+            # Crop column
+            col_img = img.crop((left, 0, right, img.height))
+
+            # Extract text from column
+            col_text = pytesseract.image_to_string(col_img, config='--psm 3 --oem 3')
+
+            if col_text.strip():
+                extracted_text.append(col_text.strip())
+
+        # Join columns with double newline
+        text = "\n\n".join(extracted_text)
+    else:
+        # No clear columns, process whole page
+        text = pytesseract.image_to_string(img, config='--psm 1 --oem 3')
+
+    if not text.strip():
         return ""
-
-    if not prediction_groups or not prediction_groups[0]:
-        return ""
-
-    # Extract text with positional info to maintain order
-    predictions = prediction_groups[0]
-
-    # Sort by reading order: top-to-bottom, left-to-right
-    sorted_predictions = sorted(predictions, key=lambda x: (
-        int(x[1][0][1]),  # y coordinate (top)
-        int(x[1][0][0])   # x coordinate (left)
-    ))
-
-    # Group by lines (similar y-coordinates)
-    lines = {}
-    for text, box in sorted_predictions:
-        y_coord = int(box[0][1])  # Top y coordinate
-
-        # Group by approximate y position (within 20 pixels)
-        line_key = round(y_coord / 20) * 20
-
-        if line_key not in lines:
-            lines[line_key] = []
-
-        lines[line_key].append((int(box[0][0]), text))  # Store with x position
-
-    # Build text maintaining reading order
-    extracted_lines = []
-    for y_key in sorted(lines.keys()):
-        # Sort words in line by x position (left to right)
-        words = sorted(lines[y_key], key=lambda x: x[0])
-        line_text = " ".join([word[1] for word in words])
-
-        if line_text.strip():
-            extracted_lines.append(line_text.strip())
-
-    if not extracted_lines:
-        return ""
-
-    # Join lines with newlines
-    full_text = "\n".join(extracted_lines)
 
     # Clean up text
-    clean_text = re.sub(r'(\w+)-\n(\w+)', r'\1\2', full_text)  # Fix hyphenation
+    clean_text = re.sub(r'(\w+)-\n(\w+)', r'\1\2', text)  # Fix hyphenation
     clean_text = re.sub(r'\n{3,}', '\n\n', clean_text)  # Normalize newlines
-    clean_text = re.sub(r'[ \t]{2,}', ' ', clean_text)  # Fix spaces
+    clean_text = re.sub(r'[ \t]{2,}', ' ', clean_text)  # Fix multiple spaces
     clean_text = re.sub(r'\s+$', '', clean_text, flags=re.MULTILINE)  # Remove trailing
 
     return clean_text.strip()
@@ -111,7 +146,7 @@ def build_database():
                 rel_path = os.path.normpath(full_path).replace("\\", "/")
 
                 print(f"Indexing: {rel_path}")
-                text = extract_text_keras_ocr(full_path)
+                text = extract_text_ocr(full_path)
 
                 cursor.execute('''
                     INSERT INTO articles (file_name, folder_name, file_path, parsed_text)

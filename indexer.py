@@ -1,8 +1,6 @@
 import os
 import re
 import sqlite3
-import cv2
-import numpy as np
 import pytesseract
 from PIL import Image
 
@@ -13,28 +11,29 @@ DB_NAME = "archive.db"
 ROOT_DIR = "images"
 
 def extract_text_tesseract(image_path):
-    """Extract text using Tesseract with improved preprocessing"""
-    img = cv2.imread(image_path)
-    if img is None:
+    """Extract text using Tesseract with preprocessing via PIL"""
+    try:
+        img = Image.open(image_path)
+    except:
         return ""
 
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-    # Upscale low-res scans
-    h, w = gray.shape
+    # Upscale low-res images
+    w, h = img.size
     if h < 1200 or w < 1200:
-        gray = cv2.resize(gray, (w * 2, h * 2), interpolation=cv2.INTER_CUBIC)
+        new_w = w * 2
+        new_h = h * 2
+        img = img.resize((new_w, new_h), Image.LANCZOS)
 
-    # Denoise and enhance
-    gray = cv2.GaussianBlur(gray, (3, 3), 0)
-    _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    # Convert to grayscale
+    if img.mode != 'L':
+        img = img.convert('L')
 
     # Use Tesseract with automatic page segmentation
-    text = pytesseract.image_to_string(thresh, config='--psm 1 --oem 3')
+    text = pytesseract.image_to_string(img, config='--psm 1 --oem 3')
 
     if not text.strip():
-        # Fallback: try direct grayscale
-        text = pytesseract.image_to_string(gray, config='--psm 3 --oem 3')
+        # Fallback: try with different PSM
+        text = pytesseract.image_to_string(img, config='--psm 3 --oem 3')
 
     # Clean up text
     clean_text = re.sub(r'(\w+)-\n(\w+)', r'\1\2', text)  # Fix hyphenation

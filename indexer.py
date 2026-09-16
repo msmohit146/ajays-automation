@@ -1,103 +1,63 @@
 import os
 import re
 import sqlite3
-import pytesseract
-from PIL import Image, ImageFilter, ImageOps
-
-if os.path.exists(r'C:\Program Files\Tesseract-OCR\tesseract.exe'):
-    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+import numpy as np
+from PIL import Image, ImageOps
+import keras_ocr
 
 DB_NAME = "archive.db"
 ROOT_DIR = "images"
 
-def detect_columns(img):
-    """Detect columns by analyzing white space (PIL only, no cv2)"""
-    # Convert to grayscale
-    if img.mode != 'L':
-        gray = img.convert('L')
-    else:
-        gray = img
-
-    w, h = gray.size
-    pixels = gray.load()
-
-    # Count white pixels in each column
-    col_white = [0] * w
-    for x in range(w):
-        for y in range(h):
-            if pixels[x, y] > 200:  # White pixels
-                col_white[x] += 1
-
-    # Find columns: areas with low white density indicate column gaps
-    threshold = h * 0.7  # 70% threshold for gap detection
-    columns = []
-    in_column = False
-    col_start = 0
-
-    for x in range(w):
-        is_gap = col_white[x] > threshold
-
-        if not is_gap and not in_column:
-            col_start = x
-            in_column = True
-        elif is_gap and in_column:
-            col_width = x - col_start
-            if col_width > w * 0.15:  # Column must be >15% width
-                columns.append((col_start, x))
-            in_column = False
-
-    if in_column:
-        columns.append((col_start, w))
-
-    return columns if len(columns) > 1 else None
+pipeline = keras_ocr.pipeline.Pipeline()
 
 def extract_text_ocr(image_path):
-    """Extract text with smart column detection (PIL + Tesseract)"""
+    """Extract text using Keras-OCR with proper reading order"""
     try:
         img = Image.open(image_path)
+        img = ImageOps.exif_transpose(img)
+        img_array = np.array(img)
     except:
         return ""
 
-    # Upscale low-res images
-    w, h = img.size
-    if h < 1200 or w < 1200:
-        scale = 2 if h < 1200 else 1
-        img = img.resize((w * scale, h * scale), Image.LANCZOS)
+    if img_array.size == 0:
+        return ""
 
-    # Convert to grayscale and enhance
-    if img.mode != 'L':
-        img = img.convert('L')
+    # Run Keras-OCR
+    try:
+        images = [img_array]
+        predictions = pipeline.recognize(images)
+    except Exception as e:
+        return ""
 
-    # Enhance contrast
-    img = ImageOps.autocontrast(img, cutoff=5)
+    if not predictions or not predictions[0]:
+        return ""
 
-    # Detect columns
-    columns = detect_columns(img)
+    predictions = predictions[0]
 
-    extracted_text = []
+    # Sort by Y position (top to bottom), then X (left to right)
+    sorted_preds = sorted(predictions, key=lambda p: (p[1][0][1], p[1][0][0]))
 
-    if columns:
-        # Process each column separately
-        for col_start, col_end in columns:
-            # Add small margin
-            margin = max(5, int((col_end - col_start) * 0.02))
-            left = max(0, col_start - margin)
-            right = min(img.width, col_end + margin)
+    # Group by line (Y coordinate)
+    lines = []
+    current_line = []
+    last_y = None
 
-            # Crop column
-            col_img = img.crop((left, 0, right, img.height))
+    for text, box in sorted_preds:
+        y_pos = box[0][1]  # Top Y of bounding box
 
-            # Extract text from column
-            col_text = pytesseract.image_to_string(col_img, config='--psm 3 --oem 3')
+        # If Y position changed significantly, it's a new line
+        if last_y is not None and abs(y_pos - last_y) > 20:
+            if current_line:
+                lines.append(' '.join(current_line))
+            current_line = []
 
-            if col_text.strip():
-                extracted_text.append(col_text.strip())
+        current_line.append(text)
+        last_y = y_pos
 
-        # Join columns with double newline
-        text = "\n\n".join(extracted_text)
-    else:
-        # No clear columns, process whole page
-        text = pytesseract.image_to_string(img, config='--psm 1 --oem 3')
+    if current_line:
+        lines.append(' '.join(current_line))
+
+    text = '\n'.join(lines)
 
     if not text.strip():
         return ""
@@ -111,10 +71,8 @@ def extract_text_ocr(image_path):
     return clean_text.strip()
 
 def build_database():
-    # Build in a temp database first, then move it
     temp_db = "archive_temp.db"
 
-    # Remove old temp db if it exists
     if os.path.exists(temp_db):
         try:
             os.remove(temp_db)
@@ -160,7 +118,6 @@ def build_database():
     conn.commit()
     conn.close()
 
-    # Replace old database with new one
     import shutil
     try:
         if os.path.exists(DB_NAME):

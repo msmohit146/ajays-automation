@@ -2,19 +2,37 @@ import os
 import re
 import sqlite3
 import numpy as np
-from PIL import Image, ImageOps
-import keras_ocr
+from PIL import Image, ImageOps, ImageEnhance, ImageFilter
+import easyocr
+import cv2
 
 DB_NAME = "archive.db"
 ROOT_DIR = "images"
 
-pipeline = keras_ocr.pipeline.Pipeline()
+reader = easyocr.Reader(['en'], gpu=False, verbose=False)
+
+def preprocess_image(image_path):
+    """Preprocess image to improve OCR accuracy"""
+    img = Image.open(image_path)
+    img = ImageOps.exif_transpose(img)
+
+    # Enhance contrast
+    enhancer = ImageEnhance.Contrast(img)
+    img = enhancer.enhance(2.0)
+
+    # Enhance sharpness
+    enhancer = ImageEnhance.Sharpness(img)
+    img = enhancer.enhance(2.0)
+
+    # Apply slight blur to reduce noise
+    img = img.filter(ImageFilter.MedianFilter(size=3))
+
+    return img
 
 def extract_text_ocr(image_path):
-    """Extract text using Keras-OCR with proper reading order"""
+    """Extract text using EasyOCR with improved preprocessing"""
     try:
-        img = Image.open(image_path)
-        img = ImageOps.exif_transpose(img)
+        img = preprocess_image(image_path)
         img_array = np.array(img)
     except:
         return ""
@@ -22,28 +40,38 @@ def extract_text_ocr(image_path):
     if img_array.size == 0:
         return ""
 
-    # Run Keras-OCR
+    # Convert to BGR for cv2 if needed
+    if len(img_array.shape) == 2:
+        img_array = cv2.cvtColor(img_array, cv2.COLOR_GRAY2BGR)
+    elif img_array.shape[2] == 4:
+        img_array = cv2.cvtColor(img_array, cv2.COLOR_RGBA2BGR)
+
+    # Run EasyOCR with text detection
     try:
-        images = [img_array]
-        predictions = pipeline.recognize(images)
-    except Exception as e:
+        results = reader.readtext(img_array, detail=1)
+    except Exception:
         return ""
 
-    if not predictions or not predictions[0]:
+    if not results:
         return ""
-
-    predictions = predictions[0]
 
     # Sort by Y position (top to bottom), then X (left to right)
-    sorted_preds = sorted(predictions, key=lambda p: (p[1][0][1], p[1][0][0]))
+    sorted_results = sorted(results, key=lambda r: (r[0][0][1], r[0][0][0]))
 
     # Group by line (Y coordinate)
     lines = []
     current_line = []
     last_y = None
 
-    for text, box in sorted_preds:
-        y_pos = box[0][1]  # Top Y of bounding box
+    for detection in sorted_results:
+        bbox = detection[0]
+        text = detection[1]
+        confidence = detection[2]
+
+        if confidence < 0.25:  # Skip very low confidence
+            continue
+
+        y_pos = bbox[0][1]
 
         # If Y position changed significantly, it's a new line
         if last_y is not None and abs(y_pos - last_y) > 20:

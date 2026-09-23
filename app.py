@@ -82,7 +82,7 @@ for idx, (file_name, folder_name, file_path, parsed_text) in enumerate(results):
             img = auto_rotate_image(fallback_path)
 
         if img:
-            st.image(img, use_column_width=True, caption=f"Scan: {file_name}")
+            st.image(img, use_container_width=True, caption=f"Scan: {file_name}")
         else:
             st.info(f"📁 Image file: {file_name}")
 

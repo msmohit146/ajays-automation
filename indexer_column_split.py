@@ -53,21 +53,25 @@ def detect_columns(image_array):
     # Calculate vertical projection (sum of white pixels in each column)
     vertical_projection = np.sum(binary, axis=0)
 
-    # Find columns (gaps between text)
+    # Find columns (gaps between text) - look for regions with low text density
     height = image_array.shape[0]
-    threshold = height * 0.3  # 30% of height
+    # Use a threshold that accounts for actual pixel value range (0-255)
+    # Looking for columns with minimal text (white space gaps)
+    threshold = height * 255 * 0.15  # Columns with < 15% black pixels are gaps
 
     column_gaps = []
     in_gap = False
     gap_start = 0
 
     for i, val in enumerate(vertical_projection):
-        if val < threshold:
+        # val is sum of 0-255 values; low sum = mostly black (text), high sum = mostly white (gaps)
+        # We want to find gaps, so look for HIGH sums of white pixels
+        if val > threshold:
             if not in_gap:
                 gap_start = i
                 in_gap = True
         else:
-            if in_gap and i - gap_start > 20:  # Gap must be at least 20 pixels wide
+            if in_gap and i - gap_start > 25:  # Gap must be at least 25 pixels wide
                 column_gaps.append((gap_start, i))
             in_gap = False
 

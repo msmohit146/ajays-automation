@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific - ignore these
+ocr_env/
+=2.5.0
+cloudflared.exe
+indexer_debug.py
+indexer_columns.py
+indexer_easyocr_precise.py
+indexer_mmocr.py
+indexer_paddle.py
+indexer_tesseract.py
+indexer_with_claude.py
+indexer_claude_parallel.py
+archive.db.bak
+
+# BUT ALLOW archive.db
+!archive.db

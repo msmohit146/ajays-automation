@@ -8,6 +8,30 @@ st.set_page_config(page_title="Ajay Srinivasan Archive", layout="wide")
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(PROJECT_DIR, "archive.db")
+IMAGE_DIR = os.path.join(PROJECT_DIR, "images")
+SCAN_MIRROR = "[SCANS]_ Ajay Srinivisan_ 14th August"
+
+
+def resolve_scan_path(file_path):
+    """Resolve the stored path or its matching path in the archive mirror."""
+    exact_path = os.path.normpath(file_path)
+    if not os.path.isabs(exact_path):
+        exact_path = os.path.join(PROJECT_DIR, exact_path)
+    if os.path.isfile(exact_path):
+        return exact_path
+
+    relative_path = os.path.relpath(exact_path, IMAGE_DIR).replace("\\", "/")
+    mirror_prefix = f"{SCAN_MIRROR}/"
+    if relative_path == ".." or relative_path.startswith(f"..{os.sep}"):
+        return None
+
+    if relative_path.casefold().startswith("[scans]_ ajay srinivisan_ 14th august/"):
+        alternate_relative = relative_path[len(mirror_prefix):]
+    else:
+        alternate_relative = f"{mirror_prefix}{relative_path}"
+
+    alternate_path = os.path.join(IMAGE_DIR, *alternate_relative.split("/"))
+    return alternate_path if os.path.isfile(alternate_path) else None
 
 def auto_rotate_image(image_path):
     """Auto-rotate image based on EXIF or orientation detection"""
@@ -75,18 +99,13 @@ for article_id, file_name, folder_name, file_path, parsed_text in results:
     col1, col2 = st.columns([1, 1])
     
     with col1:
-        exact_path = os.path.normpath(file_path).replace("\\", "/")
-        if not os.path.isabs(exact_path):
-            exact_path = os.path.join(PROJECT_DIR, exact_path)
-
-        img = None
-        if os.path.exists(exact_path):
-            img = auto_rotate_image(exact_path)
+        resolved_path = resolve_scan_path(file_path)
+        img = auto_rotate_image(resolved_path) if resolved_path else None
 
         if img:
             st.image(img, use_container_width=True, caption=f"Scan: {file_name}")
         else:
-            st.warning(f"Scan not found at its stored path: {exact_path}")
+            st.warning(f"Scan not found in the deployed image archive: {file_name}")
 
     with col2:
         st.markdown("### Extracted Text (For Manuscript Reference):")

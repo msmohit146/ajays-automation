@@ -36,19 +36,40 @@ def extract_text_from_image(image_path):
     with Image.open(image_path) as source:
         image = ImageOps.exif_transpose(source).convert("RGB")
 
-    with tempfile.TemporaryDirectory() as temp_dir:
-        normalized_path = os.path.join(temp_dir, "scan.png")
-        image.save(normalized_path)
-        child_environment = os.environ.copy()
-        child_environment["OMP_THREAD_LIMIT"] = "1"
-        result = subprocess.run(
-            [TESSERACT_EXE, normalized_path, "stdout", "-l", "eng", "--psm", "1"],
-            capture_output=True,
-            check=True,
-            timeout=120,
-            env=child_environment,
+    def recognize(source_image, label):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            normalized_path = os.path.join(temp_dir, f"{label}.png")
+            source_image.save(normalized_path)
+            child_environment = os.environ.copy()
+            child_environment["OMP_THREAD_LIMIT"] = "1"
+            result = subprocess.run(
+                [TESSERACT_EXE, normalized_path, "stdout", "-l", "eng", "--psm", "1"],
+                capture_output=True,
+                check=True,
+                timeout=120,
+                env=child_environment,
+            )
+        return result.stdout.decode("utf-8", errors="replace").strip()
+
+    text = recognize(image, "scan")
+    if is_usable_text(text):
+        return text
+
+    gray = ImageOps.grayscale(image)
+    content_box = gray.point(lambda value: 255 if value < 225 else 0).getbbox()
+    if content_box:
+        padding = 8
+        left, top, right, bottom = content_box
+        crop_box = (
+            max(0, left - padding),
+            max(0, top - padding),
+            min(image.width, right + padding),
+            min(image.height, bottom + padding),
         )
-    return result.stdout.decode("utf-8", errors="replace").strip()
+        cropped_text = recognize(image.crop(crop_box), "cropped")
+        if is_usable_text(cropped_text) and len(cropped_text) > len(text):
+            return cropped_text
+    return text
 
 
 def clean_text(text):

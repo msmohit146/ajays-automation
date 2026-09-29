@@ -22,28 +22,28 @@ WORKERS = 4
 
 def is_usable_text(text):
     alphanumeric = re.findall(r"[A-Za-z0-9]", text or "")
-    if len(alphanumeric) < 20:
+    if len(alphanumeric) < 100:
         return False
     letter_ratio = sum(character.isalpha() for character in alphanumeric) / len(alphanumeric)
     return letter_ratio >= 0.5
 
 
 def extract_text_from_image(image_path):
-    """OCR an EXIF-corrected page with Tesseract auto-layout and orientation."""
+    """OCR with auto-layout, then retry short results on cropped rotations."""
     if not os.path.isfile(TESSERACT_EXE):
         raise FileNotFoundError(f"Tesseract executable not found: {TESSERACT_EXE}")
 
     with Image.open(image_path) as source:
         image = ImageOps.exif_transpose(source).convert("RGB")
 
-    def recognize(source_image, label):
+    def recognize(source_image, label, page_mode=1):
         with tempfile.TemporaryDirectory() as temp_dir:
             normalized_path = os.path.join(temp_dir, f"{label}.png")
             source_image.save(normalized_path)
             child_environment = os.environ.copy()
             child_environment["OMP_THREAD_LIMIT"] = "1"
             result = subprocess.run(
-                [TESSERACT_EXE, normalized_path, "stdout", "-l", "eng", "--psm", "1"],
+                [TESSERACT_EXE, normalized_path, "stdout", "-l", "eng", "--psm", str(page_mode)],
                 capture_output=True,
                 check=True,
                 timeout=120,
@@ -57,19 +57,39 @@ def extract_text_from_image(image_path):
 
     gray = ImageOps.grayscale(image)
     content_box = gray.point(lambda value: 255 if value < 225 else 0).getbbox()
-    if content_box:
-        padding = 8
-        left, top, right, bottom = content_box
-        crop_box = (
-            max(0, left - padding),
-            max(0, top - padding),
-            min(image.width, right + padding),
-            min(image.height, bottom + padding),
+    if not content_box:
+        return text
+
+    left, top, right, bottom = content_box
+    padding = 8
+    crop_box = (
+        max(0, left - padding),
+        max(0, top - padding),
+        min(image.width, right + padding),
+        min(image.height, bottom + padding),
+    )
+    cropped = image.crop(crop_box)
+    cropped_text = recognize(cropped, "cropped")
+    if is_usable_text(cropped_text):
+        return cropped_text
+
+    best_text = cropped_text if len(cropped_text) > len(text) else text
+    best_score = (is_usable_text(best_text), len(re.findall(r"[A-Za-z0-9]", best_text)))
+
+    for angle in (90, 180, 270):
+        candidate = cropped.rotate(angle, expand=True)
+        candidate_text = recognize(candidate, f"crop_{angle}", page_mode=6)
+        candidate_score = (
+            is_usable_text(candidate_text),
+            len(re.findall(r"[A-Za-z0-9]", candidate_text)),
         )
-        cropped_text = recognize(image.crop(crop_box), "cropped")
-        if is_usable_text(cropped_text) and len(cropped_text) > len(text):
-            return cropped_text
-    return text
+        if candidate_score > best_score:
+            best_text = candidate_text
+            best_score = candidate_score
+        if is_usable_text(best_text) and best_score[1] >= 300:
+            break
+
+    return best_text
 
 
 def clean_text(text):

@@ -6,6 +6,9 @@ import io
 
 st.set_page_config(page_title="Ajay Srinivasan Archive", layout="wide")
 
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(PROJECT_DIR, "archive.db")
+
 def auto_rotate_image(image_path):
     """Auto-rotate image based on EXIF or orientation detection"""
     try:
@@ -20,7 +23,7 @@ def auto_rotate_image(image_path):
             return None
 
 def get_connection():
-    conn = sqlite3.connect("archive.db", check_same_thread=False, timeout=30)
+    conn = sqlite3.connect(DB_PATH, check_same_thread=False, timeout=30)
     conn.execute('PRAGMA journal_mode=WAL')
     return conn
 
@@ -37,7 +40,7 @@ sort_option = st.sidebar.radio("Sort Results By:", ["Folder / Era Name", "File N
 
 user_query = st.text_input("🔍 Search Archive (e.g., 'ICICI', 'bourses', 'prudential'):")
 
-sql = "SELECT file_name, folder_name, file_path, parsed_text FROM articles WHERE 1=1"
+sql = "SELECT id, file_name, folder_name, file_path, parsed_text FROM articles WHERE 1=1"
 params = []
 
 if selected_folder != "All Eras / Folders":
@@ -65,7 +68,7 @@ conn.close()
 st.title("📰 Ajay Srinivasan Digital Archive")
 st.write(f"Showing **{len(results)}** article(s)")
 
-for idx, (file_name, folder_name, file_path, parsed_text) in enumerate(results):
+for article_id, file_name, folder_name, file_path, parsed_text in results:
     st.divider()
     st.subheader(f"📁 Era/Folder: {folder_name} | 📄 File: {file_name}")
     
@@ -73,18 +76,17 @@ for idx, (file_name, folder_name, file_path, parsed_text) in enumerate(results):
     
     with col1:
         exact_path = os.path.normpath(file_path).replace("\\", "/")
-        fallback_path = f"images/{folder_name}/{file_name}"
+        if not os.path.isabs(exact_path):
+            exact_path = os.path.join(PROJECT_DIR, exact_path)
 
         img = None
         if os.path.exists(exact_path):
             img = auto_rotate_image(exact_path)
-        elif os.path.exists(fallback_path):
-            img = auto_rotate_image(fallback_path)
 
         if img:
             st.image(img, use_container_width=True, caption=f"Scan: {file_name}")
         else:
-            st.info(f"📁 Image file: {file_name}")
+            st.warning(f"Scan not found at its stored path: {exact_path}")
 
     with col2:
         st.markdown("### Extracted Text (For Manuscript Reference):")
@@ -92,12 +94,12 @@ for idx, (file_name, folder_name, file_path, parsed_text) in enumerate(results):
             label="OCR Text Transcript",
             value=parsed_text if parsed_text else "No text extracted.",
             height=450,
-            key=f"txt_{idx}"
+            key=f"txt_{article_id}"
         )
         st.download_button(
             label="💾 Export Transcript (.txt)",
             data=parsed_text if parsed_text else "",
             file_name=f"{file_name}_transcript.txt",
             mime="text/plain",
-            key=f"dl_{idx}"
+            key=f"dl_{article_id}"
         )

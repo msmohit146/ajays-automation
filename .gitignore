@@ -35,6 +35,10 @@ Thumbs.db
 
 # Project specific - ignore these
 ocr_env/
+.env
+images/
+archive_temp.db
+archive_before_rotation_fix_*.db
 =2.5.0
 cloudflared.exe
 indexer_debug.py

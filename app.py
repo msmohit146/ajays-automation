@@ -3,7 +3,6 @@ import sqlite3
 import os
 from PIL import Image, ImageOps
 import io
-from scan_orientation import detect_rotation
 
 st.set_page_config(page_title="Ajay Srinivasan Archive", layout="wide")
 
@@ -35,12 +34,11 @@ def resolve_scan_path(file_path):
     return alternate_path if os.path.isfile(alternate_path) else None
 
 @st.cache_data(show_spinner=False, max_entries=12)
-def auto_rotate_image(image_path, modified_time):
-    """Correct EXIF and page orientation for display without altering the scan."""
+def auto_rotate_image(image_path, modified_time, rotation):
+    """Correct EXIF and audited page orientation without altering the source scan."""
     try:
         with Image.open(image_path) as source:
             img = ImageOps.exif_transpose(source).convert("RGB")
-        rotation = detect_rotation(image_path)
         if rotation:
             img = img.rotate(-rotation, expand=True, resample=Image.Resampling.BICUBIC)
         return img
@@ -104,7 +102,7 @@ selected_page = st.sidebar.selectbox(
 page_number = page_labels.index(selected_page) + 1
 offset = (page_number - 1) * page_size
 sql = (
-    "SELECT id, file_name, folder_name, file_path, parsed_text FROM articles"
+    "SELECT id, file_name, folder_name, file_path, parsed_text, image_rotation FROM articles"
     + where_clause
     + order_clause
     + " LIMIT ? OFFSET ?"
@@ -121,7 +119,7 @@ if total_results:
 else:
     st.write("Showing **0** article(s)")
 
-for article_id, file_name, folder_name, file_path, parsed_text in results:
+for article_id, file_name, folder_name, file_path, parsed_text, image_rotation in results:
     st.divider()
     st.subheader(f"📁 Era/Folder: {folder_name} | 📄 File: {file_name}")
     
@@ -130,7 +128,11 @@ for article_id, file_name, folder_name, file_path, parsed_text in results:
     with col1:
         resolved_path = resolve_scan_path(file_path)
         img = (
-            auto_rotate_image(resolved_path, os.path.getmtime(resolved_path))
+            auto_rotate_image(
+                resolved_path,
+                os.path.getmtime(resolved_path),
+                image_rotation or 0,
+            )
             if resolved_path
             else None
         )

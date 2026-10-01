@@ -34,7 +34,7 @@ def resolve_scan_path(file_path):
     alternate_path = os.path.join(IMAGE_DIR, *alternate_relative.split("/"))
     return alternate_path if os.path.isfile(alternate_path) else None
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner=False, max_entries=12)
 def auto_rotate_image(image_path, modified_time):
     """Correct EXIF and page orientation for display without altering the scan."""
     try:
@@ -65,36 +65,61 @@ conn.close()
 selected_folder = st.sidebar.selectbox("Filter by Era / Folder:", folders)
 
 sort_option = st.sidebar.radio("Sort Results By:", ["Folder / Era Name", "File Name"])
+page_size = st.sidebar.selectbox("Results per page:", [10, 20, 50], index=0)
 
 user_query = st.text_input("🔍 Search Archive (e.g., 'ICICI', 'bourses', 'prudential'):")
 
-sql = "SELECT id, file_name, folder_name, file_path, parsed_text FROM articles WHERE 1=1"
+where_clause = " WHERE 1=1"
 params = []
 
 if selected_folder != "All Eras / Folders":
-    sql += " AND folder_name = ?"
+    where_clause += " AND folder_name = ?"
     params.append(selected_folder)
 
 if user_query.strip():
     words = [w.strip() for w in user_query.lower().split() if w.strip()]
     if words:
-        sql += " AND (" + " OR ".join(["parsed_text LIKE ?" for _ in words]) + ")"
+        where_clause += " AND (" + " OR ".join(["parsed_text LIKE ?" for _ in words]) + ")"
         for w in words:
             params.append(f"%{w}%")
 
 if sort_option == "Folder / Era Name":
-    sql += " ORDER BY folder_name ASC, file_name ASC"
+    order_clause = " ORDER BY folder_name ASC, file_name ASC"
 else:
-    sql += " ORDER BY file_name ASC"
+    order_clause = " ORDER BY file_name ASC"
 
 conn = get_connection()
 cursor = conn.cursor()
-cursor.execute(sql, params)
+cursor.execute("SELECT COUNT(*) FROM articles" + where_clause, params)
+total_results = cursor.fetchone()[0]
+page_count = max(1, (total_results + page_size - 1) // page_size)
+page_labels = [f"{page} of {page_count}" for page in range(1, page_count + 1)]
+filter_key = f"{selected_folder}|{sort_option}|{user_query}|{page_size}"
+selected_page = st.sidebar.selectbox(
+    "Page:",
+    page_labels,
+    key=f"page_{filter_key}",
+    disabled=page_count == 1,
+)
+page_number = page_labels.index(selected_page) + 1
+offset = (page_number - 1) * page_size
+sql = (
+    "SELECT id, file_name, folder_name, file_path, parsed_text FROM articles"
+    + where_clause
+    + order_clause
+    + " LIMIT ? OFFSET ?"
+)
+cursor.execute(sql, [*params, page_size, offset])
 results = cursor.fetchall()
 conn.close()
 
 st.title("📰 Ajay Srinivasan Digital Archive")
-st.write(f"Showing **{len(results)}** article(s)")
+if total_results:
+    first_result = offset + 1
+    last_result = offset + len(results)
+    st.write(f"Showing **{first_result}-{last_result}** of **{total_results}** article(s)")
+else:
+    st.write("Showing **0** article(s)")
 
 for article_id, file_name, folder_name, file_path, parsed_text in results:
     st.divider()

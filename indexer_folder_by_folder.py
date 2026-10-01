@@ -4,9 +4,11 @@ import shutil
 import sqlite3
 import subprocess
 import tempfile
+import argparse
 from concurrent.futures import ThreadPoolExecutor
 
 from PIL import Image, ImageOps
+from scan_orientation import load_oriented_image
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_NAME = os.path.join(BASE_DIR, "archive.db")
@@ -33,8 +35,7 @@ def extract_text_from_image(image_path):
     if not os.path.isfile(TESSERACT_EXE):
         raise FileNotFoundError(f"Tesseract executable not found: {TESSERACT_EXE}")
 
-    with Image.open(image_path) as source:
-        image = ImageOps.exif_transpose(source).convert("RGB")
+    image = load_oriented_image(image_path, TESSERACT_EXE)
 
     def recognize(source_image, label, page_mode=1):
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -101,7 +102,7 @@ def clean_text(text):
     return re.sub(r"\s+$", "", text, flags=re.MULTILINE).strip()
 
 
-def process_all_images():
+def process_all_images(refresh_all=False):
     """Index every scan recursively; keep good rows and resume by exact path."""
     if not os.path.isdir(ROOT_DIR):
         raise FileNotFoundError(f"Image directory does not exist: {ROOT_DIR}")
@@ -135,7 +136,7 @@ def process_all_images():
                 "SELECT id, parsed_text FROM articles WHERE file_path = ? ORDER BY id LIMIT 1",
                 (relative_path,),
             ).fetchone()
-            if existing and is_usable_text(existing[1]):
+            if existing and is_usable_text(existing[1]) and not refresh_all:
                 skipped += 1
                 continue
             work.append((index, full_path, file_name, folder_name, relative_path, existing))
@@ -190,4 +191,10 @@ def process_all_images():
 
 
 if __name__ == "__main__":
-    process_all_images()
+    parser = argparse.ArgumentParser(description="OCR and index the scan archive.")
+    parser.add_argument(
+        "--refresh-all",
+        action="store_true",
+        help="Re-OCR existing rows, including rows with previously usable text.",
+    )
+    process_all_images(refresh_all=parser.parse_args().refresh_all)

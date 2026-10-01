@@ -3,6 +3,7 @@ import sqlite3
 import os
 from PIL import Image, ImageOps
 import io
+from scan_orientation import detect_rotation
 
 st.set_page_config(page_title="Ajay Srinivasan Archive", layout="wide")
 
@@ -33,17 +34,20 @@ def resolve_scan_path(file_path):
     alternate_path = os.path.join(IMAGE_DIR, *alternate_relative.split("/"))
     return alternate_path if os.path.isfile(alternate_path) else None
 
-def auto_rotate_image(image_path):
-    """Auto-rotate image based on EXIF or orientation detection"""
+@st.cache_data(show_spinner=False)
+def auto_rotate_image(image_path, modified_time):
+    """Correct EXIF and page orientation for display without altering the scan."""
     try:
-        img = Image.open(image_path)
-        # Try to auto-rotate based on EXIF orientation
-        img = ImageOps.exif_transpose(img)
+        with Image.open(image_path) as source:
+            img = ImageOps.exif_transpose(source).convert("RGB")
+        rotation = detect_rotation(image_path)
+        if rotation:
+            img = img.rotate(-rotation, expand=True, resample=Image.Resampling.BICUBIC)
         return img
-    except Exception as e:
+    except Exception:
         try:
             return Image.open(image_path)
-        except:
+        except Exception:
             return None
 
 def get_connection():
@@ -100,7 +104,11 @@ for article_id, file_name, folder_name, file_path, parsed_text in results:
     
     with col1:
         resolved_path = resolve_scan_path(file_path)
-        img = auto_rotate_image(resolved_path) if resolved_path else None
+        img = (
+            auto_rotate_image(resolved_path, os.path.getmtime(resolved_path))
+            if resolved_path
+            else None
+        )
 
         if img:
             st.image(img, use_container_width=True, caption=f"Scan: {file_name}")

@@ -2,6 +2,7 @@ import os
 import re
 import shutil
 import subprocess
+import io
 
 from PIL import Image, ImageOps
 
@@ -20,19 +21,24 @@ def find_tesseract():
 
 
 def detect_rotation(image_path, tesseract_exe=None):
-    """Return the clockwise correction angle reported by Tesseract OSD."""
+    """Return the clockwise correction angle after applying EXIF orientation."""
     executable = tesseract_exe or find_tesseract()
     if not executable:
         return 0
 
     try:
+        with Image.open(image_path) as source:
+            image = ImageOps.exif_transpose(source).convert("RGB")
+        image_buffer = io.BytesIO()
+        image.save(image_buffer, format="PNG")
         result = subprocess.run(
-            [executable, image_path, "stdout", "--psm", "0"],
+            [executable, "stdin", "stdout", "--psm", "0"],
+            input=image_buffer.getvalue(),
             capture_output=True,
             check=False,
             timeout=30,
         )
-    except (OSError, subprocess.TimeoutExpired):
+    except (OSError, subprocess.TimeoutExpired, Image.UnidentifiedImageError):
         return 0
 
     output = result.stdout.decode("utf-8", errors="replace")

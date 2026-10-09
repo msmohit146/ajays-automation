@@ -77,7 +77,8 @@ if selected_folder != "All Eras / Folders":
 if user_query.strip():
     words = [w.strip() for w in user_query.lower().split() if w.strip()]
     if words:
-        where_clause += " AND (" + " OR ".join(["LOWER(parsed_text) LIKE ?" for _ in words]) + ")"
+        # Require ALL words to be present (AND logic) instead of ANY word (OR logic)
+        where_clause += " AND " + " AND ".join(["LOWER(parsed_text) LIKE ?" for _ in words])
         for w in words:
             params.append(f"%{w.lower()}%")
 

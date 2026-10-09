@@ -1,0 +1,336 @@
+{
+  "converted": 55,
+  "total_articles": 802,
+  "updates": [
+    {
+      "id": 1569,
+      "old_file": "Document_2026-08-15_101015.pdf",
+      "new_file": "Document_2026-08-15_101015-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1570,
+      "old_file": "Document_2026-08-15_103324.pdf",
+      "new_file": "Document_2026-08-15_103324-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1571,
+      "old_file": "Document_2026-08-15_103615.pdf",
+      "new_file": "Document_2026-08-15_103615-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1572,
+      "old_file": "2005.pdf",
+      "new_file": "2005-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1573,
+      "old_file": "Document_2026-08-15_111302.pdf",
+      "new_file": "Document_2026-08-15_111302-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1574,
+      "old_file": "2008.pdf",
+      "new_file": "2008-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1575,
+      "old_file": "Document_2026-09-15_121959.pdf",
+      "new_file": "Document_2026-09-15_121959-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1576,
+      "old_file": "Document_2026-09-15_122545.pdf",
+      "new_file": "Document_2026-09-15_122545-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1577,
+      "old_file": "Document_2026-09-15_123147.pdf",
+      "new_file": "Document_2026-09-15_123147-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1578,
+      "old_file": "Document_2026-09-15_123835.pdf",
+      "new_file": "Document_2026-09-15_123835-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1579,
+      "old_file": "Document_2026-09-15_124130.pdf",
+      "new_file": "Document_2026-09-15_124130-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1580,
+      "old_file": "Document_2026-09-15_124306.pdf",
+      "new_file": "Document_2026-09-15_124306-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1581,
+      "old_file": "Document_2026-09-15_113049.pdf",
+      "new_file": "Document_2026-09-15_113049-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1582,
+      "old_file": "Document_2026-09-15_114651.pdf",
+      "new_file": "Document_2026-09-15_114651-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1583,
+      "old_file": "Document_2026-09-15_115312.pdf",
+      "new_file": "Document_2026-09-15_115312-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1584,
+      "old_file": "Document_2026-09-15_115721.pdf",
+      "new_file": "Document_2026-09-15_115721-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1585,
+      "old_file": "Document_2026-09-15_115934.pdf",
+      "new_file": "Document_2026-09-15_115934-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1586,
+      "old_file": "Document_2026-09-15_120637.pdf",
+      "new_file": "Document_2026-09-15_120637-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1587,
+      "old_file": "Document_2026-09-15_121014.pdf",
+      "new_file": "Document_2026-09-15_121014-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1588,
+      "old_file": "Document_2026-09-13_164007.pdf",
+      "new_file": "Document_2026-09-13_164007-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1589,
+      "old_file": "Document_2026-09-13_164157.pdf",
+      "new_file": "Document_2026-09-13_164157-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1590,
+      "old_file": "Document_2026-09-13_165651.pdf",
+      "new_file": "Document_2026-09-13_165651-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1591,
+      "old_file": "Document_2026-09-13_171130.pdf",
+      "new_file": "Document_2026-09-13_171130-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1592,
+      "old_file": "Document_2026-09-13_171516.pdf",
+      "new_file": "Document_2026-09-13_171516-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1593,
+      "old_file": "Document_2026-09-13_172202.pdf",
+      "new_file": "Document_2026-09-13_172202-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1594,
+      "old_file": "Document_2026-09-13_172440.pdf",
+      "new_file": "Document_2026-09-13_172440-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1595,
+      "old_file": "Document_2026-09-13_172813.pdf",
+      "new_file": "Document_2026-09-13_172813-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1596,
+      "old_file": "Document_2026-09-13_173038.pdf",
+      "new_file": "Document_2026-09-13_173038-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1597,
+      "old_file": "Document_2026-09-13_155913.pdf",
+      "new_file": "Document_2026-09-13_155913-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1598,
+      "old_file": "Document_2026-09-13_160806.pdf",
+      "new_file": "Document_2026-09-13_160806-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1599,
+      "old_file": "Document_2026-09-13_161504.pdf",
+      "new_file": "Document_2026-09-13_161504-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1600,
+      "old_file": "Document_2026-09-13_162041.pdf",
+      "new_file": "Document_2026-09-13_162041-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1601,
+      "old_file": "Document_2026-09-13_162756.pdf",
+      "new_file": "Document_2026-09-13_162756-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1602,
+      "old_file": "Document_2026-09-13_163147.pdf",
+      "new_file": "Document_2026-09-13_163147-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1603,
+      "old_file": "Document_2026-09-13_163332.pdf",
+      "new_file": "Document_2026-09-13_163332-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1604,
+      "old_file": "Document_2026-09-13_154107.pdf",
+      "new_file": "Document_2026-09-13_154107-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1605,
+      "old_file": "Document_2026-09-13_154555.pdf",
+      "new_file": "Document_2026-09-13_154555-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1606,
+      "old_file": "Document_2026-09-13_155014.pdf",
+      "new_file": "Document_2026-09-13_155014-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1607,
+      "old_file": "Document_2026-09-13_143121.pdf",
+      "new_file": "Document_2026-09-13_143121-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1608,
+      "old_file": "Document_2026-09-13_143450.pdf",
+      "new_file": "Document_2026-09-13_143450-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1609,
+      "old_file": "Document_2026-09-13_144033.pdf",
+      "new_file": "Document_2026-09-13_144033-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1610,
+      "old_file": "Document_2026-09-13_144408.pdf",
+      "new_file": "Document_2026-09-13_144408-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1611,
+      "old_file": "Document_2026-09-13_145345.pdf",
+      "new_file": "Document_2026-09-13_145345-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1612,
+      "old_file": "Document_2026-09-13_145750.pdf",
+      "new_file": "Document_2026-09-13_145750-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1613,
+      "old_file": "Document_2026-09-13_150559.pdf",
+      "new_file": "Document_2026-09-13_150559-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1614,
+      "old_file": "Document_2026-09-13_152645.pdf",
+      "new_file": "Document_2026-09-13_152645-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1615,
+      "old_file": "Photo_2026-09-13_150029.pdf",
+      "new_file": "Photo_2026-09-13_150029-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1616,
+      "old_file": "Document_2026-09-13_135957.pdf",
+      "new_file": "Document_2026-09-13_135957-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1617,
+      "old_file": "Document_2026-09-13_140722.pdf",
+      "new_file": "Document_2026-09-13_140722-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1618,
+      "old_file": "Document_2026-09-13_141049.pdf",
+      "new_file": "Document_2026-09-13_141049-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 1619,
+      "old_file": "Document_2026-09-13_141642.pdf",
+      "new_file": "Document_2026-09-13_141642-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 2357,
+      "old_file": "Document_2026-09-15_130854.pdf",
+      "new_file": "Document_2026-09-15_130854-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 2358,
+      "old_file": "Document_2026-09-15_131036.pdf",
+      "new_file": "Document_2026-09-15_131036-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 2359,
+      "old_file": "Document_2026-09-15_132926.pdf",
+      "new_file": "Document_2026-09-15_132926-001.jpg",
+      "status": "converted"
+    },
+    {
+      "id": 2360,
+      "old_file": "misc.pdf",
+      "new_file": "misc-001.jpg",
+      "status": "converted"
+    }
+  ]
+}

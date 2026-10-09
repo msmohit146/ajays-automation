@@ -1,0 +1,496 @@
+{
+  "backup": "archive_dedup_backup_20261009_102910.db",
+  "timestamp": "2026-10-09T10:29:10.702503",
+  "duplicate_groups": 49,
+  "rows_to_remove": 95,
+  "groups": [
+    {
+      "kept_id": 1390,
+      "kept_path": "images/Misc/coverage docket/img20260915_14210387.jpg",
+      "title": "# aditya birla capital",
+      "removed_ids": [
+        1389
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 2012,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/2001 & 2002/2002/Document_2026-08-15_094541.jpg",
+      "title": "# are mutual funds a success in asia?",
+      "removed_ids": [
+        2010
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 170,
+      "kept_path": "images/2016-Newest @ top/img20260913_14432979.jpg",
+      "title": "# by invitation",
+      "removed_ids": [
+        1411
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1449,
+      "kept_path": "images/Misc/img20260915_14160199.jpg",
+      "title": "# cfo jury 2018",
+      "removed_ids": [
+        1402
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 57,
+      "kept_path": "images/2010- Newest @Top/Document_2026-09-15_121353.jpg",
+      "title": "# chairman's message",
+      "removed_ids": [
+        41
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1532,
+      "kept_path": "images/Undated- AS @IPRU (years not indicated)/Pru ICICI mid 1999.jpg",
+      "title": "# companies & markets",
+      "removed_ids": [
+        1937,
+        1893,
+        494
+      ],
+      "group_size": 4
+    },
+    {
+      "kept_id": 69,
+      "kept_path": "images/2011- Newest @Top/Document_2026-09-13_170222.jpg",
+      "title": "# cover story",
+      "removed_ids": [
+        1939,
+        1683
+      ],
+      "group_size": 3
+    },
+    {
+      "kept_id": 1933,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1999 (1)- Newest @end/1999 (8)/img20260814_18221732.jpg",
+      "title": "# debate",
+      "removed_ids": [
+        1932
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 185,
+      "kept_path": "images/2016-Newest @ top/img20260913_15203379.jpg",
+      "title": "# debutants",
+      "removed_ids": [
+        184
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 30,
+      "kept_path": "images/2009 Newest@Top/img20260915_11511542.jpg",
+      "title": "# financial advisors need to be qualified: ajay srinivasan",
+      "removed_ids": [
+        29
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1813,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1998- Newest @end/img20260814_17084757.jpg",
+      "title": "# interview",
+      "removed_ids": [
+        1812
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 2051,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/2006 Newest@top/img20260815_10400575.jpg",
+      "title": "# key message",
+      "removed_ids": [
+        2052
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 23,
+      "kept_path": "images/2009 Newest@Top/img20260915_11415122.jpg",
+      "title": "# money",
+      "removed_ids": [
+        1891
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 295,
+      "kept_path": "images/1997-Newest @ Top/img20260814_14393791.jpg",
+      "title": "# mutual fund",
+      "removed_ids": [
+        1721
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1702,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1997-Newest @ Top/img20260814_13410401.jpg",
+      "title": "# mutual funds",
+      "removed_ids": [
+        1881,
+        1889
+      ],
+      "group_size": 3
+    },
+    {
+      "kept_id": 2,
+      "kept_path": "images/2008- Newest @Top/Document_2026-09-15_122732.jpg",
+      "title": "# personal finance",
+      "removed_ids": [
+        1864
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1408,
+      "kept_path": "images/Misc/Document_2026-09-15_132256.jpg",
+      "title": "# the economic times",
+      "removed_ids": [
+        1961
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1734,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1997-Newest @ Top/img20260814_14574083.jpg",
+      "title": "# the financial express",
+      "removed_ids": [
+        1688,
+        104,
+        1834,
+        1849
+      ],
+      "group_size": 5
+    },
+    {
+      "kept_id": 1827,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1998- Newest @end/img20260814_17274276.jpg",
+      "title": "# the smart investor",
+      "removed_ids": [
+        1407,
+        1678,
+        1883
+      ],
+      "group_size": 4
+    },
+    {
+      "kept_id": 1856,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1999 (1)- Newest @end/1999 (1)/Document_2026-08-14_163718.jpg",
+      "title": "22/02/1999",
+      "removed_ids": [
+        1857
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1394,
+      "kept_path": "images/Misc/coverage docket/img20260915_14252918.jpg",
+      "title": "aditya birla",
+      "removed_ids": [
+        1391,
+        1387,
+        1392
+      ],
+      "group_size": 4
+    },
+    {
+      "kept_id": 1839,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1999 (1)- Newest @end/1999 (1)/2026-08-14_162716.jpg",
+      "title": "banking/finance",
+      "removed_ids": [
+        1838
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1430,
+      "kept_path": "images/Misc/img20260915_13401189.jpg",
+      "title": "business",
+      "removed_ids": [
+        95,
+        117,
+        88,
+        1,
+        1998
+      ],
+      "group_size": 6
+    },
+    {
+      "kept_id": 38,
+      "kept_path": "images/2009 Newest@Top/img20260915_12013750.jpg",
+      "title": "business india \u2022 august 9, 2009",
+      "removed_ids": [
+        25
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 140,
+      "kept_path": "images/2016-Newest @ top/img20260913_14004730.jpg",
+      "title": "business india \u2022 the magazine of the corporate world",
+      "removed_ids": [
+        137
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 338,
+      "kept_path": "images/1998- Newest @end/img20260814_15550528.jpg",
+      "title": "business standard",
+      "removed_ids": [
+        1732
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1925,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1999 (1)- Newest @end/1999 (8)/1999 (1) Mahika.jpg",
+      "title": "capital",
+      "removed_ids": [
+        1900
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1442,
+      "kept_path": "images/Misc/img20260915_14084909.jpg",
+      "title": "ceo india | interview",
+      "removed_ids": [
+        1446
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1474,
+      "kept_path": "images/Undated- AS @ABFS (years not indicated)/WhatsApp Image 2026-08-14 at 12.15.35.jpeg",
+      "title": "cover feature",
+      "removed_ids": [
+        77
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1727,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1997-Newest @ Top/img20260814_14491290.jpg",
+      "title": "cover story",
+      "removed_ids": [
+        1728,
+        182,
+        1974,
+        1948,
+        1946,
+        1682
+      ],
+      "group_size": 7
+    },
+    {
+      "kept_id": 1852,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1999 (1)- Newest @end/1999 (1)/Document_2026-08-14_162758.jpg",
+      "title": "deccan herald, thursday, january 14, 1999",
+      "removed_ids": [
+        1848
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1667,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1989-1996- Newest @top/1996/Document_2026-08-14_133723.jpg",
+      "title": "face to face",
+      "removed_ids": [
+        242
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1652,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1989-1996- Newest @top/1993/Document_2026-08-14_144509.jpg",
+      "title": "feature",
+      "removed_ids": [
+        1651
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 683,
+      "kept_path": "images/2007 Newest@Top/media clippings-Resignation/img20260915_13120168.jpg",
+      "title": "ft.com",
+      "removed_ids": [
+        678
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1793,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1998- Newest @end/img20260814_16362884.jpg",
+      "title": "good relations (india) ltd.",
+      "removed_ids": [
+        1780,
+        1825,
+        1787,
+        1784,
+        355,
+        1778,
+        1796,
+        1786,
+        1783,
+        1831,
+        1785,
+        1836,
+        1840,
+        1944
+      ],
+      "group_size": 15
+    },
+    {
+      "kept_id": 1399,
+      "kept_path": "images/Misc/Document_2026-09-15_125841.jpg",
+      "title": "guest column",
+      "removed_ids": [
+        131
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1801,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1998- Newest @end/img20260814_16510022.jpg",
+      "title": "interview",
+      "removed_ids": [
+        141,
+        142,
+        2028,
+        2029
+      ],
+      "group_size": 5
+    },
+    {
+      "kept_id": 94,
+      "kept_path": "images/2013-Newest@top/img20260913_15395225.jpg",
+      "title": "mumbai",
+      "removed_ids": [
+        1887
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1777,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1998- Newest @end/img20260814_16163642.jpg",
+      "title": "mutual funds",
+      "removed_ids": [
+        630,
+        1862,
+        1845,
+        1843
+      ],
+      "group_size": 5
+    },
+    {
+      "kept_id": 12,
+      "kept_path": "images/2009 Newest@Top/img20260915_11315531.jpg",
+      "title": "page 1 of 1",
+      "removed_ids": [
+        9
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1927,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1999 (1)- Newest @end/1999 (8)/img20260814_18095077.jpg",
+      "title": "personal finance",
+      "removed_ids": [
+        1865
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 635,
+      "kept_path": "images/2006 Newest@top/img20260815_10565896.jpg",
+      "title": "roundtable \u25a0 hong kong",
+      "removed_ids": [
+        634,
+        633,
+        632
+      ],
+      "group_size": 4
+    },
+    {
+      "kept_id": 323,
+      "kept_path": "images/1997-Newest @ Top/img20260814_15195661.jpg",
+      "title": "special feature",
+      "removed_ids": [
+        1751
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1909,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1999 (1)- Newest @end/1999 (6)/Document_2026-08-14_180032.jpg",
+      "title": "sunday, august 22, 1999",
+      "removed_ids": [
+        1908
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 669,
+      "kept_path": "images/2007 Newest@Top/media clippings-Resignation/img20260915_12560430.jpg",
+      "title": "telegraph.co.uk",
+      "removed_ids": [
+        661
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1823,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1998- Newest @end/img20260814_17244174.jpg",
+      "title": "the asian age",
+      "removed_ids": [
+        1769
+      ],
+      "group_size": 2
+    },
+    {
+      "kept_id": 1698,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1997-Newest @ Top/img20260814_13361710.jpg",
+      "title": "the economic times",
+      "removed_ids": [
+        144,
+        1661,
+        34,
+        1850
+      ],
+      "group_size": 5
+    },
+    {
+      "kept_id": 1733,
+      "kept_path": "images/[SCANS]_ Ajay Srinivisan_ 14th August/1997-Newest @ Top/img20260814_14562705.jpg",
+      "title": "the financial express",
+      "removed_ids": [
+        148,
+        1866
+      ],
+      "group_size": 3
+    },
+    {
+      "kept_id": 263,
+      "kept_path": "images/1997-Newest @ Top/img20260814_13272986.jpg",
+      "title": "the hindu",
+      "removed_ids": [
+        1820,
+        1538
+      ],
+      "group_size": 3
+    }
+  ],
+  "final_count": 819
+}

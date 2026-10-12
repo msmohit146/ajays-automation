@@ -14,7 +14,9 @@ SCAN_MIRROR = "[SCANS]_ Ajay Srinivisan_ 14th August"
 
 def resolve_scan_path(file_path):
     """Resolve the stored path or its matching path in the archive mirror."""
-    exact_path = os.path.normpath(file_path)
+    # Normalize path separators to forward slashes first, then convert to system-specific separators
+    normalized_file_path = file_path.replace("\\", "/")
+    exact_path = os.path.normpath(normalized_file_path)
     if not os.path.isabs(exact_path):
         exact_path = os.path.join(PROJECT_DIR, exact_path)
     if os.path.isfile(exact_path):

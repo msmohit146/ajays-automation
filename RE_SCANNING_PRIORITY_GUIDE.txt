@@ -1,0 +1,202 @@
+================================================================================
+ARCHIVE DATABASE RE-SCANNING PRIORITY GUIDE
+================================================================================
+Generated: 2026-10-16
+Database: archive.db (799 total articles)
+
+QUICK SUMMARY
+================================================================================
+Total Problematic Articles: 63 out of 799 (7.9%)
+Database Health Status: GOOD (most articles have usable OCR)
+
+BREAKDOWN BY ISSUE TYPE:
+  - Empty/null text:           1 article  (0.1%)  [CRITICAL]
+  - Very short text:           1 article  (0.1%)  [HIGH]
+  - Image rotation issues:    41 articles (5.1%)  [MEDIUM - Already fixed]
+  - Corrupted/suspicious text:20 articles (2.5%)  [MEDIUM]
+
+================================================================================
+PRIORITY 1: CRITICAL - IMMEDIATE ACTION REQUIRED
+================================================================================
+
+Issue: Articles with ZERO usable text
+Count: 1 article
+Article IDs: 2360
+
+Details:
+  - ID 2360: misc-001.jpg
+    Location: Misc folder
+    File path: images/Misc/misc-001.jpg
+    Status: NO OCR data at all
+
+Action Steps:
+  1. Check if source image file still exists in images/Misc/
+  2. If file exists, re-OCR immediately using Claude Vision or alternative
+  3. If file missing, attempt to recover from backup
+  4. Investigate why this article failed OCR (corrupted image? wrong format?)
+  5. Document the issue and solution for future reference
+
+Time Estimate: 15-30 minutes per article
+
+================================================================================
+PRIORITY 2: HIGH - Should be re-scanned soon
+================================================================================
+
+Issue: Articles with MINIMAL text (< 100 characters)
+Count: 1 article
+Article IDs: 1444
+
+Details:
+  - ID 1444: img20260915_14103006.jpg
+    Location: Misc folder
+    Text extracted: "CEO INDIA    INTERVIEW" (22 chars)
+    Status: Failed OCR, only extracted title/header
+
+Action Steps:
+  1. Review source image quality (resolution, clarity, color balance)
+  2. Verify image is not corrupted or partially lost
+  3. Re-OCR with higher quality settings (if available)
+  4. If OCR still fails, consider manual transcription
+  5. Compare with similar articles to identify OCR settings issue
+
+Time Estimate: 20-45 minutes per article
+
+================================================================================
+PRIORITY 3: MEDIUM - Already manually fixed (Monitor for future)
+================================================================================
+
+Issue: Images with manual rotation applied
+Count: 41 articles
+Rotation Breakdown:
+  - 90° rotated:  16 articles
+  - 180° rotated: 20 articles
+  - 270° rotated:  5 articles
+
+Most Affected Folders:
+  1. 2013-Newest@top:  13 rotated (59.1% of folder)
+  2. 2016-Newest @ top: 9 rotated (20.5% of folder)
+  3. 2009 Newest@Top:   4 rotated (14.3% of folder)
+
+These Articles Have Good Text Data:
+  - Only 1 article has concerning text length (ID 1432: 285 chars)
+  - All others have 1,000+ characters of good OCR text
+  - They were successfully fixed and have usable data
+
+Action Steps:
+  1. No immediate re-scanning needed (these are already working)
+  2. Review source image storage - consider rotating originals to prevent re-work
+  3. If receiving new scans, establish image orientation validation
+  4. Monitor re-scanning operations to ensure rotation issues don't recur
+  5. Consider if rotation handling can be automated in future imports
+
+Time Estimate: Low priority (already functional)
+
+================================================================================
+PRIORITY 4: MEDIUM - Potentially corrupted/garbled text
+================================================================================
+
+Issue: Text with excessive special characters (mixed languages, encoding issues)
+Count: 20 articles
+Issue Type: excessive_special_chars (indicates non-ASCII text or OCR errors)
+
+Article Locations:
+  - 2016-Newest @ top:                    7 articles (IDs: 150-156)
+  - Undated- Japanese- Korean- Asian:     7 articles (IDs: 1541-1549)
+  - Other locations:                      6 articles (IDs: 676, 1618, 1692, 2022, 2051)
+
+These Folders Need Special Handling:
+  1. "Undated- Japanese- Korean- Asian clips" - Contains multi-language content
+  2. "2016-Newest @ top" - Mixed language articles (Hindi, Gujarati, English)
+
+Why It Happened:
+  - OCR engine extracted non-ASCII characters (Hindi, Chinese, etc.)
+  - Mixed language documents with multiple character sets
+  - Possible encoding issues during import/storage
+
+Action Steps:
+  1. Manual review of sample articles to confirm actual content quality
+  2. Identify which articles are legitimately multi-language vs corrupted
+  3. For legitimate multi-language: Keep as-is, mark with language tags
+  4. For corrupted: Re-OCR with language-specific or multilingual model
+  5. Consider using Claude Vision which handles mixed languages better
+
+Time Estimate: 30-60 minutes total for sampling; then prioritize if needed
+
+Sample Articles for Manual Review:
+  - ID 150: 1525 chars (Hindi/English mix)
+  - ID 676: 593 chars (Chinese text)
+  - ID 1541-1549: Japanese/Korean/Chinese content
+
+================================================================================
+RECOMMENDED RE-SCANNING WORKFLOW
+================================================================================
+
+Phase 1: IMMEDIATE (Next 1-2 hours)
+  [ ] Re-scan ID 2360 (empty text)
+  [ ] Re-scan ID 1444 (short text)
+  Time commitment: ~45 minutes
+  Impact: Recover 2 articles worth of usable data
+
+Phase 2: EVALUATION (Next 1-2 days)
+  [ ] Manually review sample of 5 articles from Priority 4
+  [ ] Determine if they need re-scanning or just language tagging
+  [ ] Assess which corrupted articles are actually valid multi-language content
+  Time commitment: ~30-45 minutes
+  Impact: Clarify which articles need real work vs. just documentation
+
+Phase 3: PREVENTION (Ongoing)
+  [ ] For Priority 3 articles: Check and fix source image files
+  [ ] Establish image quality checklist for future imports
+  [ ] Implement rotation detection to catch issues early
+  Time commitment: ~30-60 minutes
+  Impact: Prevent future rotation issues
+
+Phase 4: OPTIONAL (If time allows)
+  [ ] Re-OCR Priority 4 articles with better language support
+  [ ] Update OCR settings for known problem folders
+  Time commitment: Varies based on number selected
+
+================================================================================
+DATABASE HEALTH ASSESSMENT
+================================================================================
+
+Text Coverage:
+  - 70.7% of articles have 1,000-5,000 chars (good quality)
+  - 19.1% of articles have 5,000+ chars (excellent)
+  -  6.9% have 500-1,000 chars (acceptable)
+  -  3.0% have 100-500 chars (needs review)
+  -  0.2% have less than 100 chars (problem)
+
+Overall Assessment: HEALTHY DATABASE
+  - 90% of articles have good to excellent OCR coverage
+  - Most issues are edge cases or special circumstances
+  - No systemic OCR failure (only 1 completely empty article)
+
+Recommendations:
+  1. Current database is usable and functional
+  2. Focus re-scanning efforts on Priority 1 & 2 (only 2 articles)
+  3. Document Priority 4 articles rather than re-scan if valid content
+  4. Use Priority 3 as learning case for image handling improvements
+
+================================================================================
+CSV FILES FOR REFERENCE
+================================================================================
+
+Export files generated for detailed analysis:
+  1. articles_empty_text.csv
+     - ID, File Name, Folder, File Path, Parsed Text Length, Raw OCR Length
+
+  2. articles_short_text.csv
+     - ID, File Name, Folder, Text Length, Text Preview, Image Rotation
+
+  3. articles_with_rotation.csv
+     - ID, File Name, Folder, File Path, Rotation Angle, Text Length
+
+  4. articles_corrupted_text.csv
+     - ID, File Name, Folder, File Path, Issues, Text Length
+
+All files are in CSV format for easy import into Excel or other analysis tools.
+
+================================================================================
+END OF GUIDE
+================================================================================

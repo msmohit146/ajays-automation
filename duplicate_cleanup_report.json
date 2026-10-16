@@ -1,0 +1,45 @@
+{
+  "backup": "C:\\Users\\AB COM\\Desktop\\ajays_automation\\archive_duplicate_cleanup_20261008_154722.db",
+  "duplicate_groups": 730,
+  "rows_to_remove": 746,
+  "rows_to_retain": 730,
+  "final_count": 914,
+  "exact_file_path_duplicates": 0,
+  "groups": [
+    {
+      "kept_id": 41,
+      "kept_path": "images/2009 Newest@Top/img20260915_12183207.jpg",
+      "removed_ids": [
+        639
+      ]
+    },
+    {
+      "kept_id": 58,
+      "kept_path": "images/2011- Newest @Top/2011.jpg",
+      "removed_ids": [
+        2071
+      ]
+    },
+    {
+      "kept_id": 59,
+      "kept_path": "images/2011- Newest @Top/Document_2026-09-13_164706.jpg",
+      "removed_ids": [
+        2074
+      ]
+    },
+    {
+      "kept_id": 60,
+      "kept_path": "images/2011- Newest @Top/Document_2026-09-13_165156.jpg",
+      "removed_ids": [
+        2075
+      ]
+    },
+    {
+      "kept_id": 61,
+      "kept_path": "images/2011- Newest @Top/Document_2026-09-13_165239.jpg",
+      "removed_ids": [
+        2076
+      ]
+    }
+  ]
+}

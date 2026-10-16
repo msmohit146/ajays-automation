@@ -17,29 +17,28 @@ def resolve_scan_path(file_path):
     if not file_path:
         return None
 
-    normalized_file_path = file_path.replace("\\", "/")
+    file_path = file_path.replace("\\", "/")
 
-    exact_path = os.path.join(PROJECT_DIR, normalized_file_path)
-    exact_path = os.path.normpath(exact_path)
-    if os.path.isfile(exact_path):
-        return exact_path
+    # Try absolute path first
+    if os.path.isabs(file_path) or (file_path.startswith("C:") or file_path.startswith("/")):
+        abs_path = os.path.normpath(file_path)
+        if os.path.isfile(abs_path):
+            return abs_path
 
-    relative_path = normalized_file_path.replace("\\", "/")
-    if relative_path.startswith("images/"):
-        relative_path = relative_path[7:]
+    # Try relative to PROJECT_DIR
+    rel_path = os.path.join(PROJECT_DIR, file_path)
+    rel_path = os.path.normpath(rel_path)
+    if os.path.isfile(rel_path):
+        return rel_path
 
-    mirror_prefix = f"{SCAN_MIRROR}/"
-    if relative_path == ".." or relative_path.startswith(".."):
-        return None
+    # Try with mirror folder
+    if not file_path.lower().startswith("[scans]"):
+        mirror_path = os.path.join(IMAGE_DIR, SCAN_MIRROR, file_path.replace("images/", ""))
+        mirror_path = os.path.normpath(mirror_path)
+        if os.path.isfile(mirror_path):
+            return mirror_path
 
-    if relative_path.lower().startswith("[scans]_ ajay srinivisan_ 14th august/"):
-        alternate_relative = relative_path[len(mirror_prefix):]
-    else:
-        alternate_relative = f"{mirror_prefix}{relative_path}"
-
-    alternate_path = os.path.join(IMAGE_DIR, *alternate_relative.split("/"))
-    alternate_path = os.path.normpath(alternate_path)
-    return alternate_path if os.path.isfile(alternate_path) else None
+    return None
 
 @st.cache_data(show_spinner=False, max_entries=12)
 def auto_rotate_image(image_path, modified_time, rotation):

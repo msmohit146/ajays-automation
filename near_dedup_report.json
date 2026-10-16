@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-10-09T11:11:42.963149",
+  "near_duplicates_removed": 14,
+  "final_count": 802,
+  "removals": [
+    {
+      "similarity": 0.9800884955752213,
+      "kept_id": 658,
+      "kept_file": "img20260915_12435423.jpg",
+      "removed_id": 664,
+      "removed_file": "img20260915_12503253.jpg"
+    },
+    {
+      "similarity": 0.9454209065679926,
+      "kept_id": 1860,
+      "kept_file": "Receipt_2026-08-14_161236.jpg",
+      "removed_id": 1839,
+      "removed_file": "2026-08-14_162716.jpg"
+    },
+    {
+      "similarity": 0.9428651843512524,
+      "kept_id": 671,
+      "kept_file": "img20260915_12581686.jpg",
+      "removed_id": 652,
+      "removed_file": "img20260915_12351154.jpg"
+    },
+    {
+      "similarity": 0.9392647842301545,
+      "kept_id": 669,
+      "kept_file": "img20260915_12560430.jpg",
+      "removed_id": 679,
+      "removed_file": "img20260915_13073618.jpg"
+    },
+    {
+      "similarity": 0.9345078513979318,
+      "kept_id": 1859,
+      "kept_file": "Handwritten_2026-08-14_161612.jpg",
+      "removed_id": 1851,
+      "removed_file": "Document_2026-08-14_162625.jpg"
+    },
+    {
+      "similarity": 0.9180243082492888,
+      "kept_id": 660,
+      "kept_file": "img20260915_12460702.jpg",
+      "removed_id": 672,
+      "removed_file": "img20260915_12592316.jpg"
+    },
+    {
+      "similarity": 0.891042430591933,
+      "kept_id": 663,
+      "kept_file": "img20260915_12492611.jpg",
+      "removed_id": 667,
+      "removed_file": "img20260915_12535170.jpg"
+    },
+    {
+      "similarity": 0.8811928811928812,
+      "kept_id": 657,
+      "kept_file": "img20260915_12430920.jpg",
+      "removed_id": 663,
+      "removed_file": "img20260915_12492611.jpg"
+    },
+    {
+      "similarity": 0.8727566041540633,
+      "kept_id": 665,
+      "kept_file": "img20260915_12513897.jpg",
+      "removed_id": 647,
+      "removed_file": "img20260915_12292764.jpg"
+    },
+    {
+      "similarity": 0.864539165364874,
+      "kept_id": 657,
+      "kept_file": "img20260915_12430920.jpg",
+      "removed_id": 651,
+      "removed_file": "img20260915_12342115.jpg"
+    },
+    {
+      "similarity": 0.85734293717487,
+      "kept_id": 1980,
+      "kept_file": "img20260815_09400418.jpg",
+      "removed_id": 1995,
+      "removed_file": "img20260815_09561938.jpg"
+    },
+    {
+      "similarity": 0.8529795563288386,
+      "kept_id": 660,
+      "kept_file": "img20260915_12460702.jpg",
+      "removed_id": 648,
+      "removed_file": "img20260915_12300586.jpg"
+    },
+    {
+      "similarity": 0.8380952380952381,
+      "kept_id": 660,
+      "kept_file": "img20260915_12460702.jpg",
+      "removed_id": 685,
+      "removed_file": "img20260915_13141421.jpg"
+    },
+    {
+      "similarity": 0.8260560375480017,
+      "kept_id": 197,
+      "kept_file": "Document_2026-08-14_152126.jpg",
+      "removed_id": 1625,
+      "removed_file": "Document_2026-08-14_152322.jpg"
+    }
+  ]
+}

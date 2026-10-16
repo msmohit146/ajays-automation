@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-10-09T16:07:35.708784",
+  "total_articles": 5,
+  "total_extracted": 5,
+  "total_updated": 5,
+  "total_errors": 0,
+  "corrections": [
+    {
+      "id": 1724,
+      "file": "img20260814_14450459.jpg",
+      "original_length": 2298,
+      "new_length": 2322,
+      "timestamp": "2026-10-09T16:07:35.694630"
+    },
+    {
+      "id": 1763,
+      "file": "img20260814_15532223.jpg",
+      "original_length": 2410,
+      "new_length": 2410,
+      "timestamp": "2026-10-09T16:07:35.696500"
+    },
+    {
+      "id": 1774,
+      "file": "img20260814_16114147.jpg",
+      "original_length": 2037,
+      "new_length": 2031,
+      "timestamp": "2026-10-09T16:07:35.700109"
+    },
+    {
+      "id": 1853,
+      "file": "Document_2026-08-14_162933.jpg",
+      "original_length": 8211,
+      "new_length": 8270,
+      "timestamp": "2026-10-09T16:07:35.704616"
+    },
+    {
+      "id": 1875,
+      "file": "Document_2026-08-14_171415.jpg",
+      "original_length": 7649,
+      "new_length": 3579,
+      "timestamp": "2026-10-09T16:07:35.708764"
+    }
+  ],
+  "errors": []
+}

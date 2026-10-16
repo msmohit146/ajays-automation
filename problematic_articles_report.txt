@@ -1,0 +1,257 @@
+====================================================================================================
+ARCHIVE DATABASE - PROBLEMATIC ARTICLES DETAILED REPORT
+Generated: 2026-10-16
+====================================================================================================
+
+TOTAL ARTICLES IN DATABASE: 799
+
+====================================================================================================
+1. ARTICLES WITH EMPTY/NULL PARSED_TEXT (Critical - No usable OCR data)
+====================================================================================================
+
+Total: 1 articles
+
+ID 2360 | misc-001.jpg                             | Folder: Misc
+         Path: images/Misc/misc-001.jpg
+         Parsed length: 0 chars | Raw OCR length: 0 chars | Rotation: 0
+
+====================================================================================================
+2. ARTICLES WITH SHORT TEXT (<100 characters) - High priority
+====================================================================================================
+
+Total: 1 articles
+
+ID 1444 | img20260915_14103006.jpg                 |  22 chars
+         Folder: Misc
+         Text: CEO INDIA    INTERVIEW
+
+====================================================================================================
+3. ARTICLES WITH IMAGE ROTATION (Already manually fixed)
+====================================================================================================
+
+Total: 41 articles
+
+
+Rotation angle: 90° (16 articles)
+  ID   32 | img20260915_11532801.jpg                 | 2009 Newest@Top                | Text: 3282 chars
+  ID   35 | img20260915_11585352.jpg                 | 2009 Newest@Top                | Text: 2174 chars
+  ID   59 | Document_2026-09-13_164706.jpg           | 2011- Newest @Top              | Text: 6010 chars
+  ID   99 | img20260913_15464964.jpg                 | 2013-Newest@top                | Text: 5523 chars
+  ID  103 | img20260913_15502813.jpg                 | 2013-Newest@top                | Text: 3209 chars
+  ID  106 | img20260913_15550892.jpg                 | 2013-Newest@top                | Text: 4733 chars
+  ID  108 | img20260913_15591157.jpg                 | 2013-Newest@top                | Text: 4715 chars
+  ID  115 | img20260913_16070536.jpg                 | 2013-Newest@top                | Text: 4080 chars
+  ID  135 | img20260913_13523952.jpg                 | 2016-Newest @ top              | Text: 8402 chars
+  ID  139 | img20260913_13595065.jpg                 | 2016-Newest @ top              | Text: 2826 chars
+  ID  177 | img20260913_14553769.jpg                 | 2016-Newest @ top              | Text: 2282 chars
+  ID 1417 | img20260915_13225116.jpg                 | Misc                           | Text: 2311 chars
+  ID 1431 | img20260915_13422370.jpg                 | Misc                           | Text: 3484 chars
+  ID 1432 | img20260915_13535533.jpg                 | Misc                           | Text: 285 chars
+  ID 1436 | img20260915_14034752.jpg                 | Misc                           | Text: 2756 chars
+  ID 1449 | img20260915_14160199.jpg                 | Misc                           | Text: 2887 chars
+
+Rotation angle: 180° (20 articles)
+  ID   37 | img20260915_12003128.jpg                 | 2009 Newest@Top                | Text: 4221 chars
+  ID   93 | img20260913_15384996.jpg                 | 2013-Newest@top                | Text: 3876 chars
+  ID  100 | img20260913_15474813.jpg                 | 2013-Newest@top                | Text: 1070 chars
+  ID  102 | img20260913_15491927.jpg                 | 2013-Newest@top                | Text: 4426 chars
+  ID  110 | img20260913_16013832.jpg                 | 2013-Newest@top                | Text: 3692 chars
+  ID  111 | img20260913_16022677.jpg                 | 2013-Newest@top                | Text: 4728 chars
+  ID  112 | img20260913_16034898.jpg                 | 2013-Newest@top                | Text: 5338 chars
+  ID  113 | img20260913_16044518.jpg                 | 2013-Newest@top                | Text: 3451 chars
+  ID  138 | img20260913_13584208.jpg                 | 2016-Newest @ top              | Text: 1289 chars
+  ID  178 | img20260913_14561908.jpg                 | 2016-Newest @ top              | Text: 4716 chars
+  ID  183 | img20260913_15111014.jpg                 | 2016-Newest @ top              | Text: 4790 chars
+  ID  185 | img20260913_15203379.jpg                 | 2016-Newest @ top              | Text: 2383 chars
+  ID 1464 | WhatsApp Image 2026-08-14 at 12.04.55.jpeg | Undated- AS @ABFS (years not indicated) | Text: 2527 chars
+  ID 1508 | WhatsApp Image 2026-08-14 at 12.55.46.jpeg | Undated- AS @ABFS (years not indicated) | Text: 2162 chars
+  ID 1510 | WhatsApp Image 2026-08-14 at 12.57.32.jpeg | Undated- AS @ABFS (years not indicated) | Text: 2666 chars
+  ID 1515 | WhatsApp Image 2026-08-14 at 13.01.59.jpeg | Undated- AS @ABFS (years not indicated) | Text: 3072 chars
+  ID 1517 | WhatsApp Image 2026-08-14 at 13.03.48.jpeg | Undated- AS @ABFS (years not indicated) | Text: 3155 chars
+  ID 1557 | ITC Threadneedle 1996.jpg                | Undated-AS@ Threadneedle (years not indicated) | Text: 3117 chars
+  ID 2041 | img20260815_10064133.jpg                 | 2006 Newest@top                | Text: 2573 chars
+  ID 2042 | img20260815_10072631.jpg                 | 2006 Newest@top                | Text: 2685 chars
+
+Rotation angle: 270° (5 articles)
+  ID   30 | img20260915_11511542.jpg                 | 2009 Newest@Top                | Text: 5139 chars
+  ID  107 | img20260913_15581894.jpg                 | 2013-Newest@top                | Text: 3692 chars
+  ID  170 | img20260913_14432979.jpg                 | 2016-Newest @ top              | Text: 4728 chars
+  ID  180 | img20260913_14583549.jpg                 | 2016-Newest @ top              | Text: 9485 chars
+  ID 1448 | img20260915_14145561.jpg                 | Misc                           | Text: 6421 chars
+
+====================================================================================================
+4. ARTICLES WITH POTENTIALLY CORRUPTED TEXT
+====================================================================================================
+
+Total: 20 articles with corruption indicators
+
+ID  150 | img20260913_14143482.jpg                 |  1525 chars
+         Folder: 2016-Newest @ top
+         Issues: excessive_special_chars
+ID  151 | img20260913_14154110.jpg                 |   533 chars
+         Folder: 2016-Newest @ top
+         Issues: excessive_special_chars
+ID  152 | img20260913_14164732.jpg                 |  1163 chars
+         Folder: 2016-Newest @ top
+         Issues: excessive_special_chars
+ID  153 | img20260913_14175376.jpg                 |  1041 chars
+         Folder: 2016-Newest @ top
+         Issues: excessive_special_chars
+ID  154 | img20260913_14185999.jpg                 |   611 chars
+         Folder: 2016-Newest @ top
+         Issues: excessive_special_chars
+ID  155 | img20260913_14222120.jpg                 |   638 chars
+         Folder: 2016-Newest @ top
+         Issues: excessive_special_chars
+ID  156 | img20260913_14230514.jpg                 |   563 chars
+         Folder: 2016-Newest @ top
+         Issues: excessive_special_chars
+ID  676 | img20260915_13041740.jpg                 |   593 chars
+         Folder: media clippings-Resignation
+         Issues: excessive_special_chars
+ID 1541 | Junk.jpg                                 |   701 chars
+         Folder: Undated- Japanese- Korean- Asian clips
+         Issues: excessive_special_chars
+ID 1542 | Junk1.jpg                                |   939 chars
+         Folder: Undated- Japanese- Korean- Asian clips
+         Issues: excessive_special_chars
+ID 1543 | Junk3.jpg                                |  1073 chars
+         Folder: Undated- Japanese- Korean- Asian clips
+         Issues: excessive_special_chars
+ID 1544 | Junk4.jpg                                |   982 chars
+         Folder: Undated- Japanese- Korean- Asian clips
+         Issues: excessive_special_chars
+ID 1545 | Junk5.jpg                                |   632 chars
+         Folder: Undated- Japanese- Korean- Asian clips
+         Issues: excessive_special_chars
+ID 1546 | Junk6.jpg                                |   685 chars
+         Folder: Undated- Japanese- Korean- Asian clips
+         Issues: excessive_special_chars
+ID 1548 | Junk8.jpg                                |   586 chars
+         Folder: Undated- Japanese- Korean- Asian clips
+         Issues: excessive_special_chars
+ID 1549 | Taiwan 2004.jpg                          |  1271 chars
+         Folder: Undated- Japanese- Korean- Asian clips
+         Issues: excessive_special_chars
+ID 1618 | Document_2026-09-13_141049-001.jpg       |  4631 chars
+         Folder: 2017- Newest @top
+         Issues: excessive_special_chars
+ID 1692 | img20260814_13305548.jpg                 |  1074 chars
+         Folder: 1997-Newest @ Top
+         Issues: mostly_numbers_symbols
+ID 2022 | Document_2026-08-15_104743_1.jpg         |   734 chars
+         Folder: 2005
+         Issues: excessive_special_chars
+ID 2051 | img20260815_10400575.jpg                 |   959 chars
+         Folder: 2006 Newest@top
+         Issues: excessive_special_chars
+
+====================================================================================================
+5. SUMMARY BY FOLDER/ERA
+====================================================================================================
+
+Folder                              |  Total |  Empty |  Short | Rotated | Problematic %
+------------------------------------------------------------------------------------------
+Undated- AS @ABFS (years not indicated) |     68 |      0 |      0 |      5 |         7.4%
+1998- Newest @end                   |     65 |      0 |      0 |      0 |         0.0%
+1997-Newest @ Top                   |     65 |      0 |      0 |      0 |         0.0%
+Misc                                |     53 |      1 |      2 |      6 |        17.0%
+2016-Newest @ top                   |     44 |      0 |      0 |      9 |        20.5%
+2000 Newest@ top                    |     44 |      0 |      0 |      0 |         0.0%
+2006 Newest@top                     |     29 |      0 |      0 |      2 |         6.9%
+2011- Newest @Top                   |     28 |      0 |      0 |      1 |         3.6%
+2009 Newest@Top                     |     28 |      0 |      0 |      4 |        14.3%
+2010- Newest @Top                   |     23 |      0 |      0 |      0 |         0.0%
+Undated- AS @IPRU (years not indicated) |     22 |      0 |      0 |      0 |         0.0%
+2013-Newest@top                     |     22 |      0 |      0 |     13 |        59.1%
+media clippings-Resignation         |     21 |      0 |      0 |      0 |         0.0%
+2015- Newest @Top                   |     20 |      0 |      0 |      0 |         0.0%
+1992                                |     20 |      0 |      0 |      0 |         0.0%
+Undated-AS@ Threadneedle (years not indicated) |     19 |      0 |      0 |      1 |         5.3%
+2012- Newest @Top                   |     18 |      0 |      0 |      0 |         0.0%
+1999 (3)                            |     18 |      0 |      0 |      0 |         0.0%
+1996                                |     17 |      0 |      0 |      0 |         0.0%
+2005                                |     16 |      0 |      0 |      0 |         0.0%
+2008- Newest @Top                   |     14 |      0 |      0 |      0 |         0.0%
+1999 (1)                            |     14 |      0 |      0 |      0 |         0.0%
+2007 Newest@Top                     |     11 |      0 |      0 |      0 |         0.0%
+2002                                |     11 |      0 |      0 |      0 |         0.0%
+1999 (8)                            |     11 |      0 |      0 |      0 |         0.0%
+1999 (7)                            |     11 |      0 |      0 |      0 |         0.0%
+1999 (6)                            |     11 |      0 |      0 |      0 |         0.0%
+2017- Newest @top                   |     10 |      0 |      0 |      0 |         0.0%
+Undated- Japanese- Korean- Asian clips |      9 |      0 |      0 |      0 |         0.0%
+2014- Newest @Top                   |      8 |      0 |      0 |      0 |         0.0%
+1999 (2)                            |      8 |      0 |      0 |      0 |         0.0%
+1993                                |      7 |      0 |      0 |      0 |         0.0%
+coverage docket                     |      6 |      0 |      0 |      0 |         0.0%
+2004                                |      6 |      0 |      0 |      0 |         0.0%
+1999 (5)                            |      6 |      0 |      0 |      0 |         0.0%
+1994                                |      4 |      0 |      0 |      0 |         0.0%
+2001                                |      3 |      0 |      0 |      0 |         0.0%
+1999 (9)                            |      2 |      0 |      0 |      0 |         0.0%
+1999 (4)                            |      2 |      0 |      0 |      0 |         0.0%
+1991                                |      2 |      0 |      0 |      0 |         0.0%
+1989                                |      2 |      0 |      0 |      0 |         0.0%
+1990                                |      1 |      0 |      0 |      0 |         0.0%
+
+====================================================================================================
+6. RECOMMENDATIONS & ACTION PLAN
+====================================================================================================
+
+[PRIORITY 1] CRITICAL - Empty parsed_text (0 characters usable)
+  Count: 1 article(s)
+  Action:
+    - These articles have NO OCR data extracted
+    - Check if source image files still exist
+    - Re-scan with OCR (Claude Vision or alternative OCR tool)
+    - Investigate why initial OCR failed
+  Article IDs: 2360
+
+[PRIORITY 2] HIGH - Short text (<100 characters)
+  Count: 1 article(s)
+  Action:
+    - These articles likely had OCR failures
+    - Check source image quality and resolution
+    - Re-scan with higher quality settings
+    - Consider manual transcription if source is clear
+  Article IDs: 1444
+
+[PRIORITY 3] MEDIUM - Image rotation issues (Already manually fixed)
+  Count: 41 article(s)
+  Action:
+    - These images required manual rotation to be readable
+    - Consider fixing source images to prevent future re-scanning
+    - Monitor for any re-occurrence of rotation issues
+    - Rotation breakdown: 90°=16, 180°=20, 270°=5
+
+[PRIORITY 4] MEDIUM - Potentially corrupted text
+  Count: 20 article(s)
+  Action:
+    - Manual review needed to confirm corruption
+    - May be due to:
+      - Non-ASCII text encoding (Hindi, Chinese, Gujarati, etc.)
+      - Mixed language documents
+      - Poor OCR quality with special characters
+    - Consider re-OCR with language-specific models
+
+====================================================================================================
+OVERALL SUMMARY
+====================================================================================================
+Total articles: 1
+Problematic articles: 63 (6300.0%)
+  - Empty/null text: 1
+  - Short text (<100 chars): 1
+  - Image rotation issues: 41
+  - Corrupted/suspicious text: 20
+
+Database health: NEEDS ATTENTION
+
+====================================================================================================
+Generated output files:
+  - articles_empty_text.csv
+  - articles_short_text.csv
+  - articles_with_rotation.csv
+  - articles_corrupted_text.csv
+  - problematic_articles_report.txt
+====================================================================================================

@@ -71,6 +71,7 @@ topics = ["All Topics"] + [r[0] for r in cursor.fetchall()]
 conn.close()
 selected_folder = st.sidebar.selectbox("Filter by Era / Folder:", folders)
 selected_topic = st.sidebar.selectbox("Filter by Topic:", topics)
+show_rescan = st.sidebar.checkbox("Show only articles needing re-scan", value=False)
 
 sort_option = st.sidebar.radio("Sort Results By:", ["Folder / Era Name", "File Name"])
 page_size = st.sidebar.selectbox("Results per page:", [10, 20, 50], index=0)
@@ -87,6 +88,9 @@ if selected_folder != "All Eras / Folders":
 if selected_topic != "All Topics":
     where_clause += " AND topic = ?"
     params.append(selected_topic)
+
+if show_rescan:
+    where_clause += " AND needs_rescan = 1"
 
 if user_query.strip():
     words = [w.strip() for w in user_query.lower().split() if w.strip()]
@@ -117,7 +121,7 @@ selected_page = st.sidebar.selectbox(
 page_number = page_labels.index(selected_page) + 1
 offset = (page_number - 1) * page_size
 sql = (
-    "SELECT id, file_name, folder_name, file_path, parsed_text, image_rotation, topic FROM articles"
+    "SELECT id, file_name, folder_name, file_path, parsed_text, image_rotation, topic, needs_rescan FROM articles"
     + where_clause
     + order_clause
     + " LIMIT ? OFFSET ?"
@@ -134,10 +138,11 @@ if total_results:
 else:
     st.write("Showing **0** article(s)")
 
-for article_id, file_name, folder_name, file_path, parsed_text, image_rotation, topic in results:
+for article_id, file_name, folder_name, file_path, parsed_text, image_rotation, topic, needs_rescan in results:
     st.divider()
     topic_display = f" | 🏷️ Topic: {topic}" if topic else ""
-    st.subheader(f"📁 Era/Folder: {folder_name} | 📄 File: {file_name}{topic_display}")
+    rescan_warning = " | ⚠️ NEEDS RE-SCAN" if needs_rescan else ""
+    st.subheader(f"📁 Era/Folder: {folder_name} | 📄 File: {file_name}{topic_display}{rescan_warning}")
     
     col1, col2 = st.columns([1, 1])
     

@@ -66,8 +66,11 @@ conn = get_connection()
 cursor = conn.cursor()
 cursor.execute("SELECT DISTINCT folder_name FROM articles ORDER BY folder_name")
 folders = ["All Eras / Folders"] + [r[0] for r in cursor.fetchall()]
+cursor.execute("SELECT DISTINCT topic FROM articles WHERE topic IS NOT NULL ORDER BY topic")
+topics = ["All Topics"] + [r[0] for r in cursor.fetchall()]
 conn.close()
 selected_folder = st.sidebar.selectbox("Filter by Era / Folder:", folders)
+selected_topic = st.sidebar.selectbox("Filter by Topic:", topics)
 
 sort_option = st.sidebar.radio("Sort Results By:", ["Folder / Era Name", "File Name"])
 page_size = st.sidebar.selectbox("Results per page:", [10, 20, 50], index=0)
@@ -80,6 +83,10 @@ params = []
 if selected_folder != "All Eras / Folders":
     where_clause += " AND folder_name = ?"
     params.append(selected_folder)
+
+if selected_topic != "All Topics":
+    where_clause += " AND topic = ?"
+    params.append(selected_topic)
 
 if user_query.strip():
     words = [w.strip() for w in user_query.lower().split() if w.strip()]
@@ -110,7 +117,7 @@ selected_page = st.sidebar.selectbox(
 page_number = page_labels.index(selected_page) + 1
 offset = (page_number - 1) * page_size
 sql = (
-    "SELECT id, file_name, folder_name, file_path, parsed_text, image_rotation FROM articles"
+    "SELECT id, file_name, folder_name, file_path, parsed_text, image_rotation, topic FROM articles"
     + where_clause
     + order_clause
     + " LIMIT ? OFFSET ?"
@@ -127,9 +134,10 @@ if total_results:
 else:
     st.write("Showing **0** article(s)")
 
-for article_id, file_name, folder_name, file_path, parsed_text, image_rotation in results:
+for article_id, file_name, folder_name, file_path, parsed_text, image_rotation, topic in results:
     st.divider()
-    st.subheader(f"📁 Era/Folder: {folder_name} | 📄 File: {file_name}")
+    topic_display = f" | 🏷️ Topic: {topic}" if topic else ""
+    st.subheader(f"📁 Era/Folder: {folder_name} | 📄 File: {file_name}{topic_display}")
     
     col1, col2 = st.columns([1, 1])
     

@@ -1,0 +1,267 @@
+{
+  "backup": "archive_before_missing_import_20261113_170159.db",
+  "missing_total": 124,
+  "inserted": 72,
+  "failed": [
+    {
+      "folder": "2012- Newest @Top",
+      "file": "Document_2026-09-13_162425.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrfN1Noe6VQdDR7hhsb'}"
+    },
+    {
+      "folder": "2012- Newest @Top",
+      "file": "Document_2026-09-13_162756-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrfNGFqAFno1eUJduPX'}"
+    },
+    {
+      "folder": "2013-Newest@top",
+      "file": "img20260913_15411616.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgNMythaCwFVrLyAHe'}"
+    },
+    {
+      "folder": "2013-Newest@top",
+      "file": "img20260913_15525238.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgRfRW4fyxcv2ywcU6'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_143121-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgT5FNmMPpBxHyn37N'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_143450-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgTADktkQxvE2wUTeY'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_144033-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgVb4p23UXvftFWSa1'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_144033-003.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgVYLHcZXp32jU7B68'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_144033-004.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgWinEBKwEYDs8o6vE'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_144408-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgZF5QuxXhTe2uiQx8'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_145345-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cgzrgb9gFD3oLieavBy7J'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_145750-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgdKuBwyw2NubCzm2M'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_150559-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrggCnhEWqnakk3NSM3'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_150559-003.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgiRjooo8m9h9LtkDk'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_150559-004.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgnucinWsepzRshTy9'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_150559-005.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgrbNKwa7rNT4ki5zL'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_150559-006.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrguZwzXYzBqeHjUjXL'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_150559-007.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgwP6fz73LJ4Ehdd9M'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_150559-008.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgxdVpy8cNo7jMCHmE'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_152113.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgxiiTJygwCjhHfwiC'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Document_2026-09-13_152645-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrgzNBUU3UvNEpdS4AY'}"
+    },
+    {
+      "folder": "2015- Newest @Top",
+      "file": "Photo_2026-09-13_150029-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhBURXho8FUyMzQekH'}"
+    },
+    {
+      "folder": "2016-Newest @ top",
+      "file": "img20260913_13562285.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhCDp68h9n5WyLG7cD'}"
+    },
+    {
+      "folder": "2016-Newest @ top",
+      "file": "img20260913_14041122.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhDKYJdfn6TpfPsGqo'}"
+    },
+    {
+      "folder": "2016-Newest @ top",
+      "file": "img20260913_14051375.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhFH7pVFVMgmah2A1z'}"
+    },
+    {
+      "folder": "2016-Newest @ top",
+      "file": "img20260913_14085490.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhFynHL6Yc4DmmCxFw'}"
+    },
+    {
+      "folder": "2016-Newest @ top",
+      "file": "img20260913_14124640.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhGQ5ywpY7pnV8Hnpb'}"
+    },
+    {
+      "folder": "2016-Newest @ top",
+      "file": "img20260913_15075904.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhHbmB9WqKyryiNST1'}"
+    },
+    {
+      "folder": "2016-Newest @ top",
+      "file": "img20260913_15195953.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhHhTvC8MibtRYWrQF'}"
+    },
+    {
+      "folder": "2016-Newest @ top",
+      "file": "img20260913_15331780.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhJBFPhKPX8GmT4bqc'}"
+    },
+    {
+      "folder": "2017- Newest @top",
+      "file": "Document_2026-09-13_135957-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhKtwNVY4Fm3TVRiq8'}"
+    },
+    {
+      "folder": "2017- Newest @top",
+      "file": "Document_2026-09-13_140722-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhLLEGiTij4LByR4NP'}"
+    },
+    {
+      "folder": "2017- Newest @top",
+      "file": "Document_2026-09-13_141049-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhMShb8Pdqx573vDEe'}"
+    },
+    {
+      "folder": "2017- Newest @top",
+      "file": "Document_2026-09-13_141642-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhMwDYF9vPYqo1Gvzh'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "Document_2026-09-15_130127.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhNn4oLR8mtXuhHPJn'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "Document_2026-09-15_130854-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhQdgqx7W8GsU8gSeC'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "Document_2026-09-15_131036-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhRTJBrnsozc9FJ1Qn'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "Document_2026-09-15_131724.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhRhgnZCy2AZqK78Bz'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "Document_2026-09-15_132926-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhRo8cVhwaVZjqzBjN'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "Document_2026-09-15_132926-003.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhUFDhh1Xhi3rxx9s3'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "Document_2026-09-15_133141_1.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhUSdMnDVJKLFFEq1Z'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "img20260915_14124293.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhV1sKe5gXRpVqYvt2'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "misc-002.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhVDGmHHhZDvae2bP3'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "misc-003.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhWLUsiPpNUEXRfS7i'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "misc-004.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhY9sg6fcRaY86uXZP'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "misc-005.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhZTzoLSXXakh1Eu1S'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "misc-006.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cgzrha6TaGELoCpijD5P4'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "misc-007.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cgzrha8gk6KYgkkDxF9vh'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "misc-008.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhbfTYtfJkYyGWQEad'}"
+    },
+    {
+      "folder": "Misc",
+      "file": "misc-009.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhdU6x3nBBqHmJF59w'}"
+    },
+    {
+      "folder": "Undated- AS @IPRU (years not indicated)",
+      "file": "TBC5.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cgzrhf8KVkLhibbCG7YNB'}"
+    },
+    {
+      "folder": "Undated-AS@ Threadneedle (years not indicated)",
+      "file": "Scan incomplete2.jpg",
+      "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgzrhfCHfQjWyc9dXTgQ8'}"
+    }
+  ]
+}

@@ -79,7 +79,7 @@ def ask_model(content_text, image_b64, max_tokens):
 
 
 def detect_angle(img):
-    reply = ask_model(ANGLE_PROMPT, to_b64(img, max_side=1600, quality=85), max_tokens=300)
+    reply = ask_model(ANGLE_PROMPT, to_b64(img, max_side=1600, quality=85), max_tokens=2000)
     m = re.search(r'\b(0|90|180|270)\b', reply.split('\n')[0]) or re.search(r'\b(0|90|180|270)\b', reply)
     if not m:
         raise ValueError(f'unparseable angle reply: {reply[:120]!r}')
